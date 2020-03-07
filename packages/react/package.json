@@ -5,12 +5,18 @@
   "module": "lib/lotips-react.esm.js",
   "browser": "lib/lotips-react.umd.js",
   "typings": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "dependencies": {},
   "peerDependencies": {
     "react": "latest"
   },
   "devDependencies": {
+    "@testing-library/react-hooks": "^3.2.1",
     "jest": "24.9.0",
+    "react-hooks-testing-library": "^0.6.0",
+    "react-test-renderer": "^16.13.0",
     "rimraf": "3.0.0",
     "rollup": "1.26.5",
     "rollup-plugin-alias": "2.2.0",
@@ -28,7 +34,7 @@
   "scripts": {
     "build": "rimraf lib && rollup -c",
     "dev": "rollup -c -w",
-    "test": "ts-node test/test.ts",
+    "test": "jest",
     "pretest": "npm run build",
     "update": "npm update && npm update --save-dev",
     "check": "npm outdated && npm outdated --save-dev"
