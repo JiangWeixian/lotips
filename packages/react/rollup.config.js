@@ -1,4 +1,5 @@
 import resolve from 'rollup-plugin-node-resolve'
+import react from 'react'
 import commonjs from 'rollup-plugin-commonjs'
 import typescript from 'rollup-plugin-typescript2'
 import alias from 'rollup-plugin-alias'
@@ -9,15 +10,19 @@ export default [
   {
     input: 'src/index.ts',
     output: {
-      name: 'howLongUntilLunch',
+      name: 'lotips-react',
       file: pkg.browser,
       format: 'umd',
     },
     plugins: [
       resolve(), // so Rollup can find `ms`
-      commonjs(), // so Rollup can convert `ms` to an ES module
+      commonjs({
+        namedExports: {
+          react: Object.keys(react),
+        },
+      }), // so Rollup can convert `ms` to an ES module
       typescript({
-        typescript: require('typescript'),
+        compilerOptions: { declaration: true },
       }), // so Rollup can convert TypeScript to JavaScript
       alias({
         resolve: ['.ts', '.js', '.tsx', '.jsx'],
@@ -34,14 +39,18 @@ export default [
   // `file` and `format` for each target)
   {
     input: 'src/index.ts',
-    external: ['ms'],
     plugins: [
-      typescript(), // so Rollup can convert TypeScript to JavaScript
+      typescript({
+        compilerOptions: { declaration: true },
+      }), // so Rollup can convert TypeScript to JavaScript
       alias({
         resolve: ['.ts', '.js', '.tsx', '.jsx'],
         entries: [{ find: '@/', replacement: './src/' }],
       }),
     ],
-    output: [{ file: pkg.main, format: 'cjs' }, { file: pkg.module, format: 'es' }],
+    output: [
+      { file: pkg.main, format: 'cjs' },
+      { file: pkg.module, format: 'es' },
+    ],
   },
 ]
