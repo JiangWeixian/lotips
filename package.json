@@ -1,6 +1,5 @@
 {
   "name": "lotips",
-  "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
@@ -17,6 +16,9 @@
     "react": "^16.13.0"
   },
   "dependencies": {},
+  "publishConfig": {
+    "access": "public"   
+  },
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"

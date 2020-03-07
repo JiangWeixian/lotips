@@ -30,6 +30,9 @@
     "tslint-react": "4.2.0",
     "typescript": "3.7.2"
   },
+  "publishConfig": {
+    "access": "public"   
+  },
   "scripts": {
     "build": "rimraf lib && rollup -c",
     "dev": "rollup -c -w",
@@ -37,5 +40,6 @@
     "pretest": "npm run build",
     "update": "npm update && npm update --save-dev",
     "check": "npm outdated && npm outdated --save-dev"
-  }
+  },
+  "gitHead": "22654d385c8bcb05027ae43a08fb6cad6736836c"
 }
