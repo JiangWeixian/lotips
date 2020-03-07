@@ -1,6 +1,6 @@
 {
   "name": "@lotips/react",
-  "version": "0.0.0",
+  "version": "0.1.0-alpha.0",
   "main": "lib/lotips-react.cjs.js",
   "module": "lib/lotips-react.esm.js",
   "browser": "lib/lotips-react.umd.js",
@@ -8,7 +8,6 @@
   "files": [
     "lib"
   ],
-  "dependencies": {},
   "peerDependencies": {
     "react": "latest"
   },
