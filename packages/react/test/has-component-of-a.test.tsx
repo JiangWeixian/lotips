@@ -1,13 +1,13 @@
 import React from 'react'
-import { isComponentOfA } from '../src/is-component-of-a'
+import { hasComponentOfA } from '../src/has-component-of-a'
 
 const ComponentA = () => {
   return <a href="#">componenta</a>
 }
 
-describe('is-component-of-a', () => {
+describe('has-component-of-a', () => {
   test('should return true if children contain target component', () => {
-    const isContained = isComponentOfA([<ComponentA />, <ComponentA />], ComponentA)
+    const isContained = hasComponentOfA([<ComponentA />, <ComponentA />], ComponentA)
     expect(isContained).toBe(true)
   })
 })

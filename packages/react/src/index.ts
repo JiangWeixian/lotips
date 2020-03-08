@@ -4,4 +4,6 @@ export { useClickOutside } from './use-clickoutside'
 export { useHybridBack } from './use-hybrid-back'
 
 // components utils
-export { isComponentOfA } from './is-component-of-a'
+export { hasComponentOfA } from './has-component-of-a'
+export { getComponentsNotOfA } from './get-components-not-of-a'
+export { getComponentsOfA } from './get-components-of-a'

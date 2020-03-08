@@ -1,5 +1,6 @@
 /**
- *
+ * 在hybrid页面中，当通过router.go(-1)进行回退操作的，回退到首页之后是无法通过`router.go(-1)`关闭页面的
+ * 可能不是最好的解决方案
  */
 
 import { useState, useCallback, useRef } from 'react'
