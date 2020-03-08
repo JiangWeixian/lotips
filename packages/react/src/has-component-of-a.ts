@@ -1,5 +1,7 @@
 /**
  * react children contain target or not
+ * WARNING:
+ * - `<><componenta /></>`和`<componenta />`不相同
  */
 
 import { Children, isValidElement } from 'react'
