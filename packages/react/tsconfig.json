@@ -1,16 +1,16 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "jsx": "react",
     "module": "esnext",
+    "jsx": "react",
     "moduleResolution": "node",
     "importHelpers": true,
     "esModuleInterop": true,
     "sourceMap": true,
-    "declaration": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
+    "declaration": true,
     "strict": true,
     "resolveJsonModule": true,
     "noImplicitReturns": true,
