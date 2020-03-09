@@ -3,7 +3,6 @@
   "version": "0.6.0-alpha.0",
   "main": "lib/lotips-react.cjs.js",
   "module": "lib/lotips-react.esm.js",
-  "browser": "lib/lotips-react.umd.js",
   "typings": "lib/index.d.ts",
   "files": [
     "lib"

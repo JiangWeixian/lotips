@@ -17,7 +17,7 @@
   },
   "dependencies": {},
   "publishConfig": {
-    "access": "public"   
+    "access": "public"
   },
   "husky": {
     "hooks": {
