@@ -1,4 +1,5 @@
 /**
+ * WHY:
  * get all component a from react.children
  * WARNING:
  * - `<><componenta /></>`和`<componenta />`不相同

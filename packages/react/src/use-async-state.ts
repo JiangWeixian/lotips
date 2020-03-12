@@ -1,5 +1,5 @@
 /**
- * 场景类似
+ * WHY:
  * ```tsx
  * const [state, setState] = useState()
  * useEffect(() => {
