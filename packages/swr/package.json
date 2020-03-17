@@ -5,9 +5,13 @@
   "module": "lib/lotips-swr.esm.js",
   "browser": "lib/lotips-swr.umd.js",
   "typings": "lib/index.d.ts",
-  "dependencies": {},
+  "dependencies": {
+    "lodash.debounce": "4.0.8",
+    "swr": "0.1.18"
+  },
   "devDependencies": {
     "@testing-library/react-hooks": "3.2.1",
+    "@types/lodash.debounce": "4.0.6",
     "jest": "24.9.0",
     "react-hooks-testing-library": "0.6.0",
     "react-test-renderer": "16.13.0",

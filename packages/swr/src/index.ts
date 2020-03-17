@@ -1,1 +1,1 @@
-console.log('swr')
+export { usePage } from './use-page'
