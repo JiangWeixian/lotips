@@ -18,23 +18,38 @@ export const useLoadMore = <T, L, F>({
   const [loadMoreKey, setLoadMoreKey] = useState<L>()
   const [filter, setFilter] = useState(props.defaultFilter)
   const fetcher = useRef(debounce(props.api, debounceInterval))
-  const { data, revalidate } = useSWR(props.name, async () => {
-    const { data, loadMoreKey: newLoadMoreKey } = await fetcher.current(loadMoreKey, filter)
-    setLoadMoreKey(newLoadMoreKey)
-    return data
-  })
-  const loadmore = useCallback(() => {
-    mutate(props.name, async (v: T[]) => {
-      const { data, loadMoreKey: newLoadMoreKey } = await fetcher.current(loadMoreKey, filter)
+  const { data, revalidate } = useSWR(
+    revalidateOnFilter ? [props.name, loadMoreKey, filter] : [props.name, loadMoreKey],
+    async (_name, l: L, f: F) => {
+      const { data, loadMoreKey: newLoadMoreKey } = await fetcher.current(l, f)
       setLoadMoreKey(newLoadMoreKey)
-      return v.concat(data || [])
-    })
-  }, [props.name, loadMoreKey, filter])
+      return data
+    },
+    { revalidateOnFocus: false },
+  )
+  const loadmore = useCallback(
+    (reset?: boolean) => {
+      if (reset) {
+        revalidate()
+        return
+      }
+      mutate(
+        [props.name, loadMoreKey, filter],
+        async (v: T[]) => {
+          const { data, loadMoreKey: newLoadMoreKey } = await fetcher.current(loadMoreKey, filter)
+          setLoadMoreKey(newLoadMoreKey)
+          return v.concat(data || [])
+        },
+        false,
+      )
+    },
+    [props.name, loadMoreKey, filter, revalidate],
+  )
   const changeFilter = useCallback(
     (f: F) => {
       setFilter(prev => ({ ...prev, ...f }))
     },
-    [revalidate],
+    [revalidate, revalidateOnFilter],
   )
   const resetFilter = useCallback(() => {
     setFilter(props.defaultFilter)
@@ -54,6 +69,7 @@ export const useLoadMore = <T, L, F>({
   return {
     loadMoreKey,
     data,
+    filter,
     loadmore,
     changeFilter,
     resetFilter,

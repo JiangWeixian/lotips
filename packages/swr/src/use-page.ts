@@ -23,9 +23,10 @@ export const usePage = <T, F>({
 }: UsePageProps<T, F>) => {
   const [page, setPage] = useState(0)
   const [filter, setFilter] = useState(props.defaultFilter)
+  const cachedFilter = useRef(props.defaultFilter)
   const fetcher = useRef(debounce(props.api, debounceInterval))
   const { data, revalidate } = useSWR(
-    revalidateOnFilter ? [props.name, page, filter] : [props.name, page],
+    [props.name, page, filter],
     async (_name: string, p: number, f: F) => {
       return fetcher.current(p * limit, limit, f)
     },
@@ -37,8 +38,12 @@ export const usePage = <T, F>({
     return Math.round(total / limit)
   }, [total, limit])
   const list = useCallback(() => {
-    revalidate()
-  }, [revalidate])
+    if (revalidateOnFilter) {
+      revalidate()
+    } else {
+      setFilter(cachedFilter.current)
+    }
+  }, [revalidate, revalidateOnFilter])
   const next = useCallback(() => {
     setPage(prev => prev + 1)
   }, [page])
@@ -48,24 +53,46 @@ export const usePage = <T, F>({
   const go = useCallback(v => {
     setPage(v)
   }, [])
-  const changeFilter = useCallback((f: F) => {
-    setFilter(prev => ({ ...prev, ...f }))
-  }, [])
+  const changeFilter = useCallback(
+    (f: F) => {
+      if (revalidateOnFilter) {
+        setFilter(prev => ({ ...prev, ...f }))
+      } else {
+        cachedFilter.current = { ...cachedFilter.current, ...f }
+      }
+    },
+    [revalidateOnFilter],
+  )
   const resetFilter = useCallback(() => {
-    setFilter(props.defaultFilter)
-  }, [props.defaultFilter])
-  const changeSingleFilter = useCallback(<K extends keyof F>(k: K, v: F[K]) => {
-    setFilter(
-      prev =>
-        ({
-          ...prev,
+    if (revalidateOnFilter) {
+      setFilter(props.defaultFilter)
+    } else {
+      cachedFilter.current = props.defaultFilter
+    }
+  }, [props.defaultFilter, revalidateOnFilter])
+  const changeSingleFilter = useCallback(
+    <K extends keyof NonNullable<F>>(k: K, v: NonNullable<F>[K]) => {
+      if (revalidateOnFilter) {
+        setFilter(
+          prev =>
+            ({
+              ...prev,
+              [k]: v,
+            } as F),
+        )
+      } else {
+        cachedFilter.current = {
+          ...cachedFilter.current,
           [k]: v,
-        } as F),
-    )
-  }, [])
+        } as F
+      }
+    },
+    [revalidateOnFilter],
+  )
   return {
     data: data?.data,
     list,
+    filter,
     total,
     pages,
     current: page + 1,
