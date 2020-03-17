@@ -5,7 +5,7 @@ export default () => {
   const page = usePage({
     name: 'page',
     limit: 15,
-    revalidateOnFilter: false,
+    revalidateOnFilter: true,
     defaultFilter: {
       text: '',
     },
@@ -13,7 +13,7 @@ export default () => {
       const result = await fetch('/page', { method: 'GET' })
         .then(res => res.json())
         .then(res => res)
-      console.log(skip, limit, query)
+      // console.log(skip, limit, query)
       return { data: result.data, count: result.count }
     },
   })
@@ -24,6 +24,7 @@ export default () => {
       <button onClick={page.prev}>prev</button>
       <button onClick={page.list}>apply fiter</button>
       <input onChange={e => page.changeSingleFilter('text', e.target.value)} />
+      <div>{page.data?.map(v => v.id)}</div>
     </div>
   )
 }
