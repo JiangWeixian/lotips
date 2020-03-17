@@ -5,6 +5,6 @@ export default {
         id: Math.random() * 10,
       })),
       count: 100,
-    });
+    })
   },
-};
+}

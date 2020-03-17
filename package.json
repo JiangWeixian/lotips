@@ -4,7 +4,8 @@
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
     "test": "lerna run test",
-    "publish": "lerna publish"
+    "publish": "lerna publish",
+    "prettier": "prettier --config .prettierrc --write '**/*'"
   },
   "devDependencies": {
     "@types/jest": "^25.1.4",

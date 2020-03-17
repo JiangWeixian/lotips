@@ -1,4 +1,4 @@
-import { IConfig } from 'umi-types';
+import { IConfig } from 'umi-types'
 
 // ref: https://umijs.org/config/
 const config: IConfig = {
@@ -21,6 +21,6 @@ const config: IConfig = {
     ],
   ],
   history: 'hash',
-};
+}
 
-export default config;
+export default config

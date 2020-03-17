@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './index.css';
+import React from 'react'
+import styles from './index.css'
 
 export default function() {
   return (
@@ -14,5 +14,5 @@ export default function() {
         </li>
       </ul>
     </div>
-  );
+  )
 }

@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './index.css';
+import React from 'react'
+import styles from './index.css'
 
 const BasicLayout: React.FC = props => {
   return (
@@ -7,7 +7,7 @@ const BasicLayout: React.FC = props => {
       <h1 className={styles.title}>Yay! Welcome to umi!</h1>
       {props.children}
     </div>
-  );
-};
+  )
+}
 
-export default BasicLayout;
+export default BasicLayout

@@ -12,25 +12,33 @@ type UsePageProps<T = any, F = any> = {
     query?: F,
   ): Promise<{ data: T[]; total?: number; count?: number }>
   limit?: number
+  revalidateOnFilter?: boolean
 }
 
 export const usePage = <T, F>({
   limit = 15,
   debounceInterval = 300,
+  revalidateOnFilter = true,
   ...props
 }: UsePageProps<T, F>) => {
   const [page, setPage] = useState(0)
   const [filter, setFilter] = useState(props.defaultFilter)
   const fetcher = useRef(debounce(props.api, debounceInterval))
-  const { data } = useSWR([page, filter, props.name], async (v: number, f: F) => {
-    return fetcher.current(v * limit, limit, f)
-  })
+  const { data, revalidate } = useSWR(
+    revalidateOnFilter ? [page, filter, props.name] : [page, filter, props.name],
+    async (v: number, f: F) => {
+      return fetcher.current(v * limit, limit, (f as unknown) === props.name ? undefined : f)
+    },
+  )
   const total = useMemo(() => {
     return data?.count || data?.total || 0
   }, [data?.count, data?.total])
   const pages = useMemo(() => {
     return Math.round(total / limit)
   }, [total, limit])
+  const list = useCallback(() => {
+    revalidate()
+  }, [revalidate])
   const next = useCallback(() => {
     setPage(prev => prev + 1)
   }, [page])
@@ -56,6 +64,8 @@ export const usePage = <T, F>({
     )
   }, [])
   return {
+    data: data?.data,
+    list,
     total,
     pages,
     current: page + 1,
