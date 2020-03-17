@@ -16,13 +16,14 @@ export const useLoadMore = <T, L, F>({
   ...props
 }: UseLoadMore<T, L, F>) => {
   const [loadMoreKey, setLoadMoreKey] = useState<L>()
+  const cachedLoadMoreKey = useRef<L>()
   const [filter, setFilter] = useState(props.defaultFilter)
   const fetcher = useRef(debounce(props.api, debounceInterval))
   const { data, revalidate } = useSWR(
-    revalidateOnFilter ? [props.name, loadMoreKey, filter] : [props.name, loadMoreKey],
+    [props.name, loadMoreKey, filter],
     async (_name, l: L, f: F) => {
       const { data, loadMoreKey: newLoadMoreKey } = await fetcher.current(l, f)
-      setLoadMoreKey(newLoadMoreKey)
+      cachedLoadMoreKey.current = newLoadMoreKey
       return data
     },
     { revalidateOnFocus: false },
@@ -30,14 +31,17 @@ export const useLoadMore = <T, L, F>({
   const loadmore = useCallback(
     (reset?: boolean) => {
       if (reset) {
-        revalidate()
+        setLoadMoreKey(cachedLoadMoreKey.current)
         return
       }
       mutate(
         [props.name, loadMoreKey, filter],
         async (v: T[]) => {
-          const { data, loadMoreKey: newLoadMoreKey } = await fetcher.current(loadMoreKey, filter)
-          setLoadMoreKey(newLoadMoreKey)
+          const { data, loadMoreKey: newLoadMoreKey } = await fetcher.current(
+            cachedLoadMoreKey.current,
+            filter,
+          )
+          cachedLoadMoreKey.current = newLoadMoreKey
           return v.concat(data || [])
         },
         false,

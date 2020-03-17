@@ -25,6 +25,11 @@ export default () => {
       <button onClick={() => loadmore.loadmore()}>loadmore with concat prev ones</button>
       <button onClick={() => loadmore.loadmore(true)}>loadmore with reset</button>
       <input onChange={e => loadmore.changeSingleFilter('text', e.target.value)} />
+      <div>
+        {loadmore.data?.map(v => {
+          return v.id
+        })}
+      </div>
     </div>
   )
 }
