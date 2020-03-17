@@ -10,7 +10,7 @@ type UseLoadMore<T = any, L = any, F = any> = {
   revalidateOnFilter?: boolean
 }
 
-export const useLoadMore = <T, L, F>({
+export const useLoadMore = <T = any, L = any, F = any>({
   debounceInterval = 300,
   revalidateOnFilter = true,
   ...props
@@ -26,7 +26,6 @@ export const useLoadMore = <T, L, F>({
       cachedLoadMoreKey.current = newLoadMoreKey
       return data
     },
-    { revalidateOnFocus: false },
   )
   const loadmore = useCallback(
     (reset?: boolean) => {

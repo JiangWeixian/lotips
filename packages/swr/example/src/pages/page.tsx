@@ -24,6 +24,11 @@ export default () => {
       <button onClick={page.prev}>prev</button>
       <button onClick={page.list}>apply fiter</button>
       <input onChange={e => page.changeSingleFilter('text', e.target.value)} />
+      <div>
+        {page.data?.map(v => {
+          return v.id
+        })}
+      </div>
     </div>
   )
 }
