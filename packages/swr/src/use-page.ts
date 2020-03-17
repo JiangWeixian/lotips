@@ -25,9 +25,9 @@ export const usePage = <T, F>({
   const [filter, setFilter] = useState(props.defaultFilter)
   const fetcher = useRef(debounce(props.api, debounceInterval))
   const { data, revalidate } = useSWR(
-    revalidateOnFilter ? [page, filter, props.name] : [page, filter, props.name],
-    async (v: number, f: F) => {
-      return fetcher.current(v * limit, limit, (f as unknown) === props.name ? undefined : f)
+    revalidateOnFilter ? [props.name, page, filter] : [props.name, page],
+    async (_name: string, p: number, f: F) => {
+      return fetcher.current(p * limit, limit, f)
     },
   )
   const total = useMemo(() => {

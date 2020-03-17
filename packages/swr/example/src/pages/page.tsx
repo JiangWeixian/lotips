@@ -5,6 +5,7 @@ export default () => {
   const page = usePage({
     name: 'page',
     limit: 15,
+    revalidateOnFilter: false,
     defaultFilter: {
       text: '',
     },
