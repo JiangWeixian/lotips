@@ -4,6 +4,7 @@ export { useClickOutside } from './use-clickoutside'
 export { useHybridBack } from './use-hybrid-back'
 export { useDebounce } from './use-debounce'
 export { useBatch } from './use-batch'
+export { useMount } from './use-mount'
 
 // components utils
 export { hasComponentOfA } from './has-component-of-a'
