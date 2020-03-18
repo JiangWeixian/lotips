@@ -1,6 +1,6 @@
 import useSWR from 'swr'
 import { useState, useCallback, useMemo, useRef } from 'react'
-import debounce from 'lodash.debounce'
+import { useDebounce } from './use-debounce'
 
 type UsePageProps<T = any, F = any> = {
   name: string
@@ -22,13 +22,15 @@ export const usePage = <T, F>({
   ...props
 }: UsePageProps<T, F>) => {
   const [page, setPage] = useState(0)
-  const [filter, setFilter] = useState(props.defaultFilter)
+  const { value: filter, debouncedValue: debouncedFilter, setValue: setFilter } = useDebounce({
+    interval: debounceInterval,
+    defaultValue: props.defaultFilter,
+  })
   const cachedFilter = useRef(props.defaultFilter)
-  const fetcher = useRef(debounce(props.api, debounceInterval))
   const { data, revalidate } = useSWR(
-    [props.name, page, filter],
+    [props.name, page, debouncedFilter],
     async (_name: string, p: number, f: F) => {
-      return fetcher.current(p * limit, limit, f)
+      return props.api(p * limit, limit, f)
     },
   )
   const total = useMemo(() => {
@@ -43,7 +45,7 @@ export const usePage = <T, F>({
     } else {
       setFilter(cachedFilter.current)
     }
-  }, [revalidate, revalidateOnFilter])
+  }, [revalidate, revalidateOnFilter, setFilter])
   const next = useCallback(() => {
     setPage(prev => prev + 1)
   }, [page])
@@ -61,7 +63,7 @@ export const usePage = <T, F>({
         cachedFilter.current = { ...cachedFilter.current, ...f }
       }
     },
-    [revalidateOnFilter],
+    [revalidateOnFilter, setFilter],
   )
   const resetFilter = useCallback(() => {
     if (revalidateOnFilter) {
@@ -69,7 +71,7 @@ export const usePage = <T, F>({
     } else {
       cachedFilter.current = props.defaultFilter
     }
-  }, [props.defaultFilter, revalidateOnFilter])
+  }, [props.defaultFilter, revalidateOnFilter, setFilter])
   const changeSingleFilter = useCallback(
     <K extends keyof NonNullable<F>>(k: K, v: NonNullable<F>[K]) => {
       if (revalidateOnFilter) {
@@ -87,7 +89,7 @@ export const usePage = <T, F>({
         } as F
       }
     },
-    [revalidateOnFilter],
+    [revalidateOnFilter, setFilter],
   )
   return {
     data: data?.data,
