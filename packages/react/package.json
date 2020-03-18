@@ -1,6 +1,6 @@
 {
   "name": "@lotips/react",
-  "version": "0.6.0-alpha.0",
+  "version": "0.7.0-alpha.0",
   "main": "lib/lotips-react.cjs.js",
   "module": "lib/lotips-react.esm.js",
   "typings": "lib/index.d.ts",
