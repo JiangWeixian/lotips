@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback } from 'react'
-import useSWR, { mutate } from 'swr'
-import debounce from 'lodash.debounce'
+import useSWR from 'swr'
+import { useDebounce } from './use-debounce'
 
 type UseLoadMore<T = any, L = any, F = any> = {
   name: string
@@ -10,68 +10,86 @@ type UseLoadMore<T = any, L = any, F = any> = {
   revalidateOnFilter?: boolean
 }
 
+const EMPTY_DATA: any[] = []
+
 export const useLoadMore = <T = any, L = any, F = any>({
   debounceInterval = 300,
   revalidateOnFilter = true,
   ...props
 }: UseLoadMore<T, L, F>) => {
   const [loadMoreKey, setLoadMoreKey] = useState<L>()
+  const [allData, setAllData] = useState<T[]>(EMPTY_DATA)
   const cachedLoadMoreKey = useRef<L>()
-  const [filter, setFilter] = useState(props.defaultFilter)
-  const fetcher = useRef(debounce(props.api, debounceInterval))
-  const { data, revalidate } = useSWR(
-    [props.name, loadMoreKey, filter],
+  const cachedFilter = useRef(props.defaultFilter)
+  const { value: filter, debouncedValue: debouncedFilter, setValue: setFilter } = useDebounce({
+    interval: debounceInterval,
+    defaultValue: props.defaultFilter,
+  })
+  const { data, revalidate, isValidating } = useSWR(
+    [props.name, loadMoreKey, debouncedFilter],
     async (_name, l: L, f: F) => {
-      const { data, loadMoreKey: newLoadMoreKey } = await fetcher.current(l, f)
+      const { data, loadMoreKey: newLoadMoreKey } = await props.api(l, f)
+      setAllData(prev => prev.concat(data))
       cachedLoadMoreKey.current = newLoadMoreKey
-      return data
+      return { data, loadMoreKey: newLoadMoreKey }
     },
   )
   const loadmore = useCallback(
     (reset?: boolean) => {
       if (reset) {
-        setLoadMoreKey(cachedLoadMoreKey.current)
+        setAllData(EMPTY_DATA)
+        revalidate()
         return
       }
-      mutate(
-        [props.name, loadMoreKey, filter],
-        async (v: T[]) => {
-          const { data, loadMoreKey: newLoadMoreKey } = await fetcher.current(
-            cachedLoadMoreKey.current,
-            filter,
-          )
-          cachedLoadMoreKey.current = newLoadMoreKey
-          return v.concat(data || [])
-        },
-        false,
-      )
+      if (revalidateOnFilter) {
+        setLoadMoreKey(cachedLoadMoreKey.current)
+      } else {
+        setFilter(cachedFilter.current)
+        setLoadMoreKey(cachedLoadMoreKey.current)
+      }
     },
-    [props.name, loadMoreKey, filter, revalidate],
+    [props.name, filter, revalidate, revalidateOnFilter],
   )
   const changeFilter = useCallback(
     (f: F) => {
-      setFilter(prev => ({ ...prev, ...f }))
+      if (revalidateOnFilter) {
+        setFilter(prev => ({ ...prev, ...f }))
+      } else {
+        cachedFilter.current = { ...cachedFilter.current, ...f }
+      }
     },
     [revalidate, revalidateOnFilter],
   )
   const resetFilter = useCallback(() => {
-    setFilter(props.defaultFilter)
-  }, [props.defaultFilter, revalidate])
+    if (revalidateOnFilter) {
+      setFilter(props.defaultFilter)
+    } else {
+      cachedFilter.current = props.defaultFilter
+    }
+  }, [props.defaultFilter, revalidate, revalidateOnFilter])
   const changeSingleFilter = useCallback(
     <K extends keyof F>(k: K, v: F[K]) => {
-      setFilter(
-        prev =>
-          ({
-            ...prev,
-            [k]: v,
-          } as F),
-      )
+      if (revalidateOnFilter) {
+        setFilter(
+          prev =>
+            ({
+              ...prev,
+              [k]: v,
+            } as F),
+        )
+      } else {
+        cachedFilter.current = {
+          ...cachedFilter.current,
+          [k]: v,
+        } as F
+      }
     },
-    [revalidate],
+    [revalidate, revalidateOnFilter],
   )
   return {
-    loadMoreKey,
-    data,
+    loadMoreKey: data?.loadMoreKey,
+    data: allData,
+    loading: isValidating,
     filter,
     loadmore,
     changeFilter,

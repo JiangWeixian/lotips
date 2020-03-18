@@ -4,7 +4,7 @@ import { useLoadMore } from '../../../src/use-loadmore'
 export default () => {
   const loadmore = useLoadMore({
     name: 'loadmore',
-    revalidateOnFilter: true,
+    revalidateOnFilter: false,
     defaultFilter: {
       text: '',
     },
