@@ -12,6 +12,10 @@
   },
   "devDependencies": {
     "@testing-library/react-hooks": "3.2.1",
+    "@types/lodash.debounce": "^4.0.6",
+    "@types/lodash.keyby": "^4.6.6",
+    "@types/lodash.uniqby": "^4.7.6",
+    "@types/lodash.xor": "^4.5.6",
     "jest": "24.9.0",
     "react-hooks-testing-library": "0.6.0",
     "react-test-renderer": "16.13.0",
@@ -40,5 +44,12 @@
     "update": "npm update && npm update --save-dev",
     "check": "npm outdated && npm outdated --save-dev"
   },
-  "gitHead": "22654d385c8bcb05027ae43a08fb6cad6736836c"
+  "gitHead": "22654d385c8bcb05027ae43a08fb6cad6736836c",
+  "dependencies": {
+    "lodash.debounce": "^4.0.8",
+    "lodash.keyby": "^4.6.0",
+    "lodash.uniqby": "^4.7.0",
+    "lodash.xor": "^4.5.0",
+    "use-rematch-reducer": "^1.1.0"
+  }
 }
