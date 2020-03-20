@@ -13,7 +13,7 @@ type UsePageProps<T, F> = {
   ref?: React.MutableRefObject<HTMLElement>
   api(query: { skip: number; limit: number; filter?: F }): Promise<{ data: T[]; total?: number }>
   defaultFilter?: F
-  state2Query: (state: State<T, F>) => { skip: number; limit: number; filter?: F }
+  state2Query?: (state: State<T, F>) => { skip: number; limit: number; filter?: F }
   dataKey?: string
   limit?: number
 }
@@ -44,7 +44,6 @@ export const usePage = <T, F>({
   dataKey = 'id',
   ...props
 }: UsePageProps<T, F>) => {
-  const fetcher = useRef(debounce(props.api, 300))
   const [state, dispatch] = useRematchReducer({
     name: 'use-page',
     state: {
@@ -94,10 +93,16 @@ export const usePage = <T, F>({
           current: payload,
         }
       },
-      setFilter(state, payload?: F) {
+      setFilter(state, payload: F) {
         return {
           ...state,
           filter: payload,
+        }
+      },
+      clearFilter(state, _payload: void) {
+        return {
+          ...state,
+          filter: undefined,
         }
       },
     },
@@ -106,7 +111,7 @@ export const usePage = <T, F>({
         this.setStatus('loading')
         this.setCurrent(payload)
         try {
-          const { data, total } = await fetcher.current?.(state2Query(state))
+          const { data, total } = await props.api?.(state2Query(state))
           this.setStatus('loaded')
           this.setData({ data: uniqby(state.data.concat(data), dataKey), total })
         } catch (e) {
@@ -127,29 +132,30 @@ export const usePage = <T, F>({
       },
     },
   })
+  const refresh = useRef(debounce(dispatch.handleRefresh, 300))
   const handleSetFilter = useCallback(
     (filter: F) => {
       const next = { ...state.filter, ...filter }
       dispatch.setFilter(next)
-      dispatch.handleRefresh()
+      refresh.current()
     },
-    [dispatch.setFilter, state.filter, dispatch.handleRefresh],
+    [dispatch.setFilter, state.filter, refresh],
   )
   const handleSetFilterByField = useCallback(
     <K extends keyof F>(filed: K, value: F[K]) => {
       const next = { ...state.filter, [filed]: value }
-      dispatch.setFilter(next)
-      dispatch.handleRefresh()
+      dispatch.setFilter(next as F)
+      refresh.current()
     },
     [dispatch.setFilter, state.filter, dispatch.handleRefresh],
   )
   const handleResetFilter = useCallback(() => {
-    dispatch.setFilter(defaultFilter)
-    dispatch.handleRefresh()
+    dispatch.setFilter(defaultFilter as F)
+    refresh.current()
   }, [dispatch.setFilter, defaultFilter, dispatch.handleRefresh])
   const handleClearFilter = useCallback(() => {
-    dispatch.setFilter(undefined)
-    dispatch.handleRefresh()
+    dispatch.clearFilter()
+    refresh.current()
   }, [dispatch.setFilter, dispatch.handleRefresh])
   return {
     state,
