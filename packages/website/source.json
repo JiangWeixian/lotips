@@ -1,0 +1,7 @@
+{
+  "css2js": {
+    "name": "css2js",
+    "description": "convert css to js or react props, etc...",
+    "url": "https://css2js.dotenv.dev/"
+  }
+}

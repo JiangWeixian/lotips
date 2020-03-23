@@ -8,8 +8,13 @@
 import React from 'react'
 import { hasComponentOfA } from './has-component-of-a'
 
-export const getComponentsOfA = (children: React.ReactNode, target: React.ComponentType<any>) => {
+type ComponentType<T> = T[] | null | undefined
+
+export const getComponentsOfA = <T extends React.ComponentType<any>>(
+  children: React.ReactNode,
+  target: T,
+): ComponentType<T> => {
   return React.Children.map(children, child => {
     return hasComponentOfA(child, target) ? child : null
-  })
+  }) as ComponentType<T>
 }
