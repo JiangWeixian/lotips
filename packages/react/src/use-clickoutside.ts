@@ -14,7 +14,7 @@ export type UseClickOutsideProps = {
 }
 
 export function useClickOutside(
-  ref: React.MutableRefObject<HTMLElement>,
+  ref: React.MutableRefObject<HTMLElement | null | undefined>,
   { outsides = EMPTY_ELEMENTS, insides = EMPTY_ELEMENTS, ...props }: UseClickOutsideProps,
 ) {
   useEffect(
