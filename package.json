@@ -4,7 +4,7 @@
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
     "test": "lerna run test",
-    "publish": "npm run buld && lerna publish"
+    "publish": "npm run build && lerna publish"
   },
   "devDependencies": {
     "@types/jest": "^25.1.4",
