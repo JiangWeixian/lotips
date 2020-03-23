@@ -16,7 +16,8 @@
 - useHybridBack - `Hybrid`页面的返回按钮
 - useDebounce - `debounce`的`hooks`版本
 - useBatch - 批量的同时请求数据，不需要而外传递`ids`。而是收集`id`进行`debounce`请求。
-  
+- usePage - 列表页面数据管理，支持分页和`filter`筛选
+
 ## components tools
 
 - getComponentsNotOfA - 从`children`中获取非`A`的组件
