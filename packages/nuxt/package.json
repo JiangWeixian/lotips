@@ -37,6 +37,9 @@
     "update": "npm update && npm update --save-dev",
     "check": "npm outdated && npm outdated --save-dev"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
