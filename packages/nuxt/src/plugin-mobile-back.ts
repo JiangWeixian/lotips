@@ -1,3 +1,5 @@
+// refs: vue-navigator/src/navigator.js
+
 import Vue from 'vue'
 import { Plugin } from '@nuxt/types'
 import { Route } from 'vue-router'
