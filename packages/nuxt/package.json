@@ -1,0 +1,45 @@
+{
+  "name": "@lotips/nuxt",
+  "version": "0.0.0",
+  "main": "lib/lotips-nuxt.cjs.js",
+  "module": "lib/lotips-nuxt.esm.js",
+  "browser": "lib/lotips-nuxt.umd.js",
+  "typings": "lib/index.d.ts",
+  "dependencies": {
+    "ms": "2.1.2"
+  },
+  "devDependencies": {
+    "@testing-library/react-hooks": "3.2.1",
+    "@types/lodash.debounce": "4.0.6",
+    "@types/lodash.keyby": "4.6.6",
+    "@types/lodash.uniqby": "4.7.6",
+    "@types/lodash.xor": "4.5.6",
+    "jest": "24.9.0",
+    "rimraf": "3.0.0",
+    "rollup": "1.12.2",
+    "rollup-plugin-alias": "2.0.0",
+    "rollup-plugin-commonjs": "10.0.0",
+    "rollup-plugin-node-resolve": "5.0.0",
+    "rollup-plugin-typescript2": "0.24.0",
+    "ts-jest": "24.0.2",
+    "ts-node": "8.1.0",
+    "tslib": "1.9.3",
+    "tslint-config-prettier": "1.18.0",
+    "tslint-plugin-prettier": "2.1.0",
+    "tslint-react": "4.2.0",
+    "typescript": "3.7.2"
+  },
+  "scripts": {
+    "build": "rimraf lib && rollup -c",
+    "dev": "rollup -c -w",
+    "test": "ts-node test/test.ts",
+    "pretest": "npm run build",
+    "update": "npm update && npm update --save-dev",
+    "check": "npm outdated && npm outdated --save-dev"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
+}
