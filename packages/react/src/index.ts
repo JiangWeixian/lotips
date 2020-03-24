@@ -1,7 +1,6 @@
 // hooks
 export { useAsyncState } from './use-async-state'
 export { useClickOutside } from './use-clickoutside'
-export { useHybridBack } from './use-hybrid-back'
 export { useDebounce } from './use-debounce'
 export { useBatch } from './use-batch'
 export { useMount } from './use-mount'
