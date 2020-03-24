@@ -1,6 +1,6 @@
 {
   "name": "@lotips/nuxt",
-  "version": "0.0.0",
+  "version": "0.8.1-alpha.0",
   "main": "lib/lotips-nuxt.cjs.js",
   "module": "lib/lotips-nuxt.esm.js",
   "browser": "lib/lotips-nuxt.umd.js",
