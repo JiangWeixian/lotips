@@ -1,1 +1,2 @@
-console.log('nuxt')
+// servermiddlewares
+export { health } from './api-health'
