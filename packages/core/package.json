@@ -6,6 +6,7 @@
   "browser": "lib/lotips-core.umd.js",
   "typings": "lib/index.d.ts",
   "dependencies": {
+    "is-mobile": "^2.2.1",
     "ms": "2.1.2"
   },
   "devDependencies": {
