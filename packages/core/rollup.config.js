@@ -9,7 +9,7 @@ export default [
   {
     input: 'src/index.ts',
     output: {
-      name: 'howLongUntilLunch',
+      name: 'lotips-core',
       file: pkg.browser,
       format: 'umd',
     },
@@ -34,7 +34,6 @@ export default [
   // `file` and `format` for each target)
   {
     input: 'src/index.ts',
-    external: ['ms'],
     plugins: [
       typescript(), // so Rollup can convert TypeScript to JavaScript
       alias({
