@@ -3,6 +3,7 @@
  */
 
 import { useEffect } from 'react'
+import { isMobile } from '@lotips/core'
 
 const EMPTY_ELEMENTS: Element[] = []
 
@@ -17,6 +18,7 @@ export function useClickOutside(
   ref: React.MutableRefObject<HTMLElement | null | undefined>,
   { outsides = EMPTY_ELEMENTS, insides = EMPTY_ELEMENTS, ...props }: UseClickOutsideProps,
 ) {
+  const isSwitchToTouchMode = isMobile()
   useEffect(
     () => {
       const listener = (event: MouseEvent | TouchEvent) => {
@@ -36,12 +38,18 @@ export function useClickOutside(
         props.onClickOutside?.(event)
       }
 
-      document.addEventListener('mousedown', listener)
-      document.addEventListener('touchstart', listener)
+      if (!isSwitchToTouchMode) {
+        document.addEventListener('mousedown', listener)
+      } else {
+        document.addEventListener('touchstart', listener)
+      }
 
       return () => {
-        document.removeEventListener('mousedown', listener)
-        document.removeEventListener('touchstart', listener)
+        if (!isSwitchToTouchMode) {
+          document.removeEventListener('mousedown', listener)
+        } else {
+          document.removeEventListener('touchstart', listener)
+        }
       }
     },
     // Add ref and handler to effect dependencies
@@ -50,6 +58,6 @@ export function useClickOutside(
     // ... callback/cleanup to run every render. It's not a big deal ...
     // ... but to optimize you can wrap handler in useCallback before ...
     // ... passing it into this hook.
-    [ref, props.onClickInside, props.onClickOutside, outsides, insides],
+    [ref, props.onClickInside, props.onClickOutside, outsides, insides, isSwitchToTouchMode],
   )
 }
