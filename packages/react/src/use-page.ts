@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react'
+import { useCallback, useRef } from 'react'
 import { useRematchReducer } from 'use-rematch-reducer'
 import debounce from 'lodash.debounce'
 import uniqby from 'lodash.uniqby'
@@ -10,7 +10,6 @@ const defaultState2Query = <T, F>(state: State<T, F>) => {
 }
 
 type UsePageProps<T, F> = {
-  ref?: React.MutableRefObject<HTMLElement>
   api(query: { skip: number; limit: number; filter?: F }): Promise<{ data: T[]; total?: number }>
   defaultFilter?: F
   state2Query?: (state: State<T, F>) => { skip: number; limit: number; filter?: F }

@@ -50,6 +50,7 @@
   "gitHead": "22654d385c8bcb05027ae43a08fb6cad6736836c",
   "dependencies": {
     "@lotips/core": "0.8.1",
+    "@use-rematch/core": "^0.0.5-alpha.12",
     "lodash.debounce": "4.0.8",
     "lodash.keyby": "4.6.0",
     "lodash.uniqby": "4.7.0",
