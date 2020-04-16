@@ -1,1 +1,1 @@
-console.log('nextjs')
+export { isServer } from './is-server'
