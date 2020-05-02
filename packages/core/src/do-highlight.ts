@@ -7,8 +7,11 @@
 export const doHighlight = (
   original: string,
   highlight: string,
-  callback?: (match: string) => string,
+  callback?: (substring: string, ...args: any[]) => string,
 ) => {
+  if (callback) {
+    return original.replace(new RegExp('>([^<]*)?(' + highlight + ')([^>]*)?<', 'ig'), callback)
+  }
   return original.replace(
     new RegExp('>([^<]*)?(' + highlight + ')([^>]*)?<', 'ig'),
     '>$1<mark>$2</mark>$3<',
