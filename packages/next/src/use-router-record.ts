@@ -1,3 +1,9 @@
+/**
+ * NOTE:
+ * record route change
+ * WARNING:
+ * Routes is not a react.state
+ */
 import { useRouter } from 'next/router'
 
 import { record } from '../../internal/route-record'
