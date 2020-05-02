@@ -1,1 +1,1 @@
-console.log('@lotips/next')
+export { useRouterRecord } from './use-router-record'
