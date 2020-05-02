@@ -5,7 +5,7 @@ import { Plugin } from '@nuxt/types'
 import { Route } from 'vue-router'
 import { Routes, record } from '../../internal/route-record'
 
-export const MobileBack: Plugin = ctx => {
+export const PluginRouterRecord: Plugin = ctx => {
   ctx.app.router?.afterEach(to => {
     record<Route>(to)
   })
