@@ -1,9 +1,9 @@
 {
   "name": "@lotips/next",
-  "version": "0.0.0",
-  "main": "lib/lotips-next.cjs.js",
-  "module": "lib/lotips-next.esm.js",
-  "browser": "lib/lotips-next.umd.js",
+  "version": "0.8.3-alpha.0",
+  "main": "lib/lotips-nuxt.cjs.js",
+  "module": "lib/lotips-nuxt.esm.js",
+  "browser": "lib/lotips-nuxt.umd.js",
   "typings": "lib/index.d.ts",
   "devDependencies": {
     "@types/jest": "24.0.22",
@@ -33,10 +33,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
   }
 }
