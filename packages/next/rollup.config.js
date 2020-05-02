@@ -1,4 +1,7 @@
+import resolve from 'rollup-plugin-node-resolve'
+import commonjs from 'rollup-plugin-commonjs'
 import typescript from 'rollup-plugin-typescript2'
+import router from 'next/router'
 import alias from 'rollup-plugin-alias'
 import pkg from './package.json'
 
@@ -13,7 +16,11 @@ export default [
   //   },
   //   plugins: [
   //     resolve(), // so Rollup can find `ms`
-  //     commonjs(), // so Rollup can convert `ms` to an ES module
+  //     commonjs({
+  //       namedExports: {
+  //         'next/router': Object.keys(router),
+  //       },
+  //     }), // so Rollup can convert `ms` to an ES module
   //     typescript({
   //       typescript: require('typescript'),
   //     }), // so Rollup can convert TypeScript to JavaScript
