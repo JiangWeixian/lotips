@@ -12,6 +12,7 @@ export const record = (to, replaceFlag = false) => {
       Routes.push(name)
     } else if (toIndex === Routes.length - 1) {
       // refresh: do nothing
+      console.log('refresh')
     } else {
       // backward
       const count = Routes.length - 1 - toIndex
