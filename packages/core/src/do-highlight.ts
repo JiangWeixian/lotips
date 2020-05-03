@@ -11,6 +11,9 @@ export const doHighlight = (
   highlight: string,
   callback?: (substring: string, ...args: any[]) => string,
 ) => {
+  if (!highlight) {
+    return original
+  }
   if (callback) {
     return original.replace(new RegExp('>([^<]*)?(' + highlight + ')([^>]*)?<', 'ig'), callback)
   }
