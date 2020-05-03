@@ -1,6 +1,6 @@
 {
   "name": "@lotips/next",
-  "version": "0.8.3-alpha.1",
+  "version": "0.8.3-alpha.2",
   "main": "lib/lotips-nuxt.cjs.js",
   "module": "lib/lotips-nuxt.esm.js",
   "browser": "lib/lotips-nuxt.umd.js",
