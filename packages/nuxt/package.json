@@ -1,6 +1,6 @@
 {
   "name": "@lotips/nuxt",
-  "version": "0.8.1-alpha.0",
+  "version": "0.8.3-alpha.2",
   "main": "lib/lotips-nuxt.cjs.js",
   "module": "lib/lotips-nuxt.esm.js",
   "browser": "lib/lotips-nuxt.umd.js",
@@ -13,7 +13,6 @@
     "@types/lodash.uniqby": "4.7.6",
     "@types/lodash.xor": "4.5.6",
     "jest": "24.9.0",
-    "nuxt": "2.12.0",
     "rimraf": "3.0.0",
     "rollup": "1.12.2",
     "rollup-plugin-alias": "2.0.0",
@@ -39,10 +38,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
   }
 }

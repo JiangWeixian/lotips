@@ -1,18 +1,15 @@
 {
   "name": "@lotips/next",
-  "version": "1.5.2",
-  "main": "lib/lotips-next.cjs.js",
-  "module": "lib/lotips-next.esm.js",
-  "browser": "lib/lotips-next.umd.js",
+  "version": "0.8.3-alpha.2",
+  "main": "lib/lotips-nuxt.cjs.js",
+  "module": "lib/lotips-nuxt.esm.js",
+  "browser": "lib/lotips-nuxt.umd.js",
   "typings": "lib/index.d.ts",
-  "dependencies": {},
   "devDependencies": {
     "@types/jest": "24.0.22",
-    "@types/ms": "0.7.31",
     "husky": "3.0.9",
     "jest": "24.9.0",
-    "prettier": "1.19.1",
-    "pretty-quick": "2.0.1",
+    "next": "9.3.6",
     "rimraf": "3.0.0",
     "rollup": "1.12.2",
     "rollup-plugin-alias": "2.0.0",
@@ -22,6 +19,8 @@
     "ts-jest": "24.1.0",
     "ts-node": "8.5.0",
     "tslib": "1.10.0",
+    "tslint-config-prettier": "1.18.0",
+    "tslint-plugin-prettier": "2.1.0",
     "typescript": "3.7.2"
   },
   "scripts": {
@@ -31,5 +30,8 @@
     "pretest": "npm run build",
     "update": "npm update && npm update --save-dev",
     "check": "npm outdated && npm outdated --save-dev"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

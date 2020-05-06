@@ -1,3 +1,5 @@
 # @lotips/next
 
-*useful functions for nextjs*
+## route
+
+- [useRouterRecord](/src/use-router-record) - record router

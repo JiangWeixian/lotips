@@ -12,4 +12,4 @@
 
 ## plugins
 
-- [plugin-mobile-back]() - 为了解决移动端`back`在回退到第一页的时候关闭`webview`
+- [plugin-router-record]() - `record router`, 为了解决移动端`back`在回退到第一页的时候关闭`webview`

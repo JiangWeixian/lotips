@@ -1,12 +1,6 @@
-// refs: vue-navigator/src/navigator.js
+export const Routes: string[] = []
 
-import Vue from 'vue'
-import { Plugin } from '@nuxt/types'
-import { Route } from 'vue-router'
-
-const Routes: string[] = []
-
-const record = (to: Route, replaceFlag = false) => {
+export const record = (to: any, replaceFlag = false) => {
   const name = to.name || to.path
   if (replaceFlag) {
     // do nothing
@@ -24,11 +18,4 @@ const record = (to: Route, replaceFlag = false) => {
       Routes.splice(Routes.length - count, count)
     }
   }
-}
-
-export const MobileBack: Plugin = ctx => {
-  ctx.app.router?.afterEach(to => {
-    record(to)
-  })
-  Vue.prototype.$Routes = Routes
 }

@@ -1,1 +1,1 @@
-export { isServer } from './is-server'
+export { useRouterRecord } from './use-router-record'
