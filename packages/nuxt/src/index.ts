@@ -1,8 +1,8 @@
 // servermiddlewares
-export { health } from './api-health'
+export { health } from './api/api-health'
 
 // plugins
-export { PluginRouterRecord } from './plugin-router-record'
+export { pluginRouterRecord } from './plugins/plugin-router-record'
 
 // middlewares
-export { MiddlewareUserAgent } from './middleware-user-agent'
+export { middlewareUserAgent } from './middlewares/middleware-user-agent'

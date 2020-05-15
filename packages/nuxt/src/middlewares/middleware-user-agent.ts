@@ -5,9 +5,9 @@
  */
 
 import { Middleware } from '@nuxt/types'
-import { getUserAgent } from './get-user-agent'
+import { getUserAgent } from '../helpers/get-user-agent'
 
-export const MiddlewareUserAgent: Middleware = function(context) {
+export const middlewareUserAgent: Middleware = function(context) {
   // 给上下文对象增加 userAgent 属性（增加的属性可在 `asyncData` 和 `fetch` 方法中获取
   const ua = getUserAgent(context)
   ;(context as any).ua = ua
