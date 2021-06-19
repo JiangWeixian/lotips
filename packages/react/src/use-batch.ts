@@ -1,5 +1,5 @@
 /**
- * WHY:
+ * @description:
  * 在一个列表中可能会出现某个字段为ID，但是我们需要的是这个ID的具体数据；在这个字段数据无法和列表同时populate的时候
  * 这个hook作用在于收集id，然后debounce请求一次并缓存，同时通知所有使用到这个hook的组件更新
  * NOTE:
@@ -23,7 +23,6 @@ const listByIds = async <D = any>(type: string, fetcher: (ids: string[]) => Prom
   const data = await fetcher(keys as any[])
   keys.forEach((k, i) => {
     const callbacks = buffer[type][k]
-    // tslint:disable-next-line:no-dynamic-delete
     delete buffer[type][k]
     callbacks.forEach(callback => {
       callback(data[i] || undefined)
