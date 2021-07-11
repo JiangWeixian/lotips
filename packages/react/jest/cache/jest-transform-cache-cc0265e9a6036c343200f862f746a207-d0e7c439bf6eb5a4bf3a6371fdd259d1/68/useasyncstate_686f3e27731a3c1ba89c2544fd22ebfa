@@ -1,0 +1,383 @@
+744c2f0da51e531dec56f8c74593abc5
+"use strict";
+/**
+ * WHY:
+ * ```tsx
+ * const [state, setState] = useState()
+ * useEffect(() => {
+ *  const fetch = async () => {
+ *     const data = await api()
+ *     setState(data)
+ *  }
+ * }, [])
+ * NOTE:
+ * - 但有时数据是来自redux的异步获取，在以下假设下该hook比较实用。没有相应的state action，或者不需要相应的state action
+ * WARNING:
+ * - 适合对同一个ID的对象进行修改。在`Form`中的涉及到重复的初始化的情况，不太合适`useAsyncState`
+ * ```
+ */
+
+/* istanbul ignore next */
+var cov_gomdg3mo1 = function () {
+  var path = "/Users/jiangwei/projects/lotips/packages/react/src/use-async-state.ts";
+  var hash = "486cd0773b45d09d922f04bf3ca01aa1d563f7ed";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/jiangwei/projects/lotips/packages/react/src/use-async-state.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 18,
+          column: 0
+        },
+        end: {
+          line: 18,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 19,
+          column: 14
+        },
+        end: {
+          line: 19,
+          column: 30
+        }
+      },
+      "2": {
+        start: {
+          line: 20,
+          column: 0
+        },
+        end: {
+          line: 27,
+          column: 2
+        }
+      },
+      "3": {
+        start: {
+          line: 21,
+          column: 13
+        },
+        end: {
+          line: 21,
+          column: 70
+        }
+      },
+      "4": {
+        start: {
+          line: 21,
+          column: 84
+        },
+        end: {
+          line: 21,
+          column: 114
+        }
+      },
+      "5": {
+        start: {
+          line: 22,
+          column: 13
+        },
+        end: {
+          line: 22,
+          column: 40
+        }
+      },
+      "6": {
+        start: {
+          line: 22,
+          column: 50
+        },
+        end: {
+          line: 22,
+          column: 55
+        }
+      },
+      "7": {
+        start: {
+          line: 22,
+          column: 63
+        },
+        end: {
+          line: 22,
+          column: 68
+        }
+      },
+      "8": {
+        start: {
+          line: 23,
+          column: 14
+        },
+        end: {
+          line: 25,
+          column: 33
+        }
+      },
+      "9": {
+        start: {
+          line: 24,
+          column: 8
+        },
+        end: {
+          line: 24,
+          column: 51
+        }
+      },
+      "10": {
+        start: {
+          line: 26,
+          column: 4
+        },
+        end: {
+          line: 26,
+          column: 22
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 20,
+            column: 24
+          },
+          end: {
+            line: 20,
+            column: 25
+          }
+        },
+        loc: {
+          start: {
+            line: 20,
+            column: 45
+          },
+          end: {
+            line: 27,
+            column: 1
+          }
+        },
+        line: 20
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 23,
+            column: 30
+          },
+          end: {
+            line: 23,
+            column: 31
+          }
+        },
+        loc: {
+          start: {
+            line: 23,
+            column: 42
+          },
+          end: {
+            line: 25,
+            column: 5
+          }
+        },
+        line: 23
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 21,
+            column: 14
+          },
+          end: {
+            line: 21,
+            column: 59
+          }
+        },
+        type: "cond-expr",
+        locations: [{
+          start: {
+            line: 21,
+            column: 30
+          },
+          end: {
+            line: 21,
+            column: 54
+          }
+        }, {
+          start: {
+            line: 21,
+            column: 57
+          },
+          end: {
+            line: 21,
+            column: 59
+          }
+        }],
+        line: 21
+      },
+      "1": {
+        loc: {
+          start: {
+            line: 21,
+            column: 84
+          },
+          end: {
+            line: 21,
+            column: 114
+          }
+        },
+        type: "cond-expr",
+        locations: [{
+          start: {
+            line: 21,
+            column: 100
+          },
+          end: {
+            line: 21,
+            column: 109
+          }
+        }, {
+          start: {
+            line: 21,
+            column: 112
+          },
+          end: {
+            line: 21,
+            column: 114
+          }
+        }],
+        line: 21
+      },
+      "2": {
+        loc: {
+          start: {
+            line: 24,
+            column: 15
+          },
+          end: {
+            line: 24,
+            column: 50
+          }
+        },
+        type: "cond-expr",
+        locations: [{
+          start: {
+            line: 24,
+            column: 37
+          },
+          end: {
+            line: 24,
+            column: 42
+          }
+        }, {
+          start: {
+            line: 24,
+            column: 45
+          },
+          end: {
+            line: 24,
+            column: 50
+          }
+        }],
+        line: 24
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0
+    },
+    b: {
+      "0": [0, 0],
+      "1": [0, 0],
+      "2": [0, 0]
+    },
+    _coverageSchema: "43e27e138ebf9cfc5966b082cf9a028302ed4184",
+    hash: "486cd0773b45d09d922f04bf3ca01aa1d563f7ed"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+
+  if (coverage[path] && coverage[path].hash === hash) {
+    return coverage[path];
+  }
+
+  return coverage[path] = coverageData;
+}();
+
+cov_gomdg3mo1.s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var react_1 =
+/* istanbul ignore next */
+(cov_gomdg3mo1.s[1]++, require("react"));
+
+/* istanbul ignore next */
+cov_gomdg3mo1.s[2]++;
+
+exports.useAsyncState = function (value, _a) {
+  /* istanbul ignore next */
+  cov_gomdg3mo1.f[0]++;
+
+  var _b =
+  /* istanbul ignore next */
+  (cov_gomdg3mo1.s[3]++, (_a === void 0 ?
+  /* istanbul ignore next */
+  (cov_gomdg3mo1.b[0][0]++, {
+    nullstate: undefined
+  }) :
+  /* istanbul ignore next */
+  (cov_gomdg3mo1.b[0][1]++, _a)).nullstate),
+      nullstate =
+  /* istanbul ignore next */
+  (cov_gomdg3mo1.s[4]++, _b === void 0 ?
+  /* istanbul ignore next */
+  (cov_gomdg3mo1.b[1][0]++, undefined) :
+  /* istanbul ignore next */
+  (cov_gomdg3mo1.b[1][1]++, _b));
+
+  var _c =
+  /* istanbul ignore next */
+  (cov_gomdg3mo1.s[5]++, react_1.useState(nullstate)),
+      state =
+  /* istanbul ignore next */
+  (cov_gomdg3mo1.s[6]++, _c[0]),
+      set =
+  /* istanbul ignore next */
+  (cov_gomdg3mo1.s[7]++, _c[1]);
+
+  var get =
+  /* istanbul ignore next */
+  (cov_gomdg3mo1.s[8]++, react_1.useMemo(function () {
+    /* istanbul ignore next */
+    cov_gomdg3mo1.f[1]++;
+    cov_gomdg3mo1.s[9]++;
+    return state === nullstate ?
+    /* istanbul ignore next */
+    (cov_gomdg3mo1.b[2][0]++, value) :
+    /* istanbul ignore next */
+    (cov_gomdg3mo1.b[2][1]++, state);
+  }, [value, state, nullstate]));
+
+  /* istanbul ignore next */
+  cov_gomdg3mo1.s[10]++;
+  return [get, set];
+};

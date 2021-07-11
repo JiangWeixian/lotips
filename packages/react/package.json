@@ -40,9 +40,9 @@
     "build": "rimraf lib && rollup -c",
     "dev": "rollup -c -w",
     "test": "jest",
-    "pretest": "npm run build",
-    "update": "npm update && npm update --save-dev",
-    "check": "npm outdated && npm outdated --save-dev"
+    "pretest": "yarn run build",
+    "update": "yarn update && yarn update --save-dev",
+    "check": "yarn outdated && yarn outdated --save-dev"
   },
   "gitHead": "22654d385c8bcb05027ae43a08fb6cad6736836c",
   "dependencies": {
