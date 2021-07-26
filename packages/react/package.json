@@ -1,6 +1,6 @@
 {
   "name": "@lotips/react",
-  "version": "0.8.3-alpha.2",
+  "version": "0.8.3",
   "files": [
     "lib"
   ],
@@ -19,7 +19,7 @@
     "react": "latest"
   },
   "dependencies": {
-    "@lotips/core": "^0.8.3-alpha.2",
+    "@lotips/core": "^0.8.3",
     "lodash.debounce": "4.0.8",
     "lodash.keyby": "4.6.0",
     "lodash.uniqby": "4.7.0",
