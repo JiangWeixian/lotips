@@ -20,7 +20,6 @@
   },
   "dependencies": {
     "@lotips/core": "^0.8.3-alpha.2",
-    "@use-rematch/core": "^0.0.5-alpha.12",
     "lodash.debounce": "4.0.8",
     "lodash.keyby": "4.6.0",
     "lodash.uniqby": "4.7.0",

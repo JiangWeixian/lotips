@@ -141,7 +141,6 @@ importers:
       '@types/lodash.keyby': 4.6.6
       '@types/lodash.uniqby': 4.7.6
       '@types/lodash.xor': 4.5.6
-      '@use-rematch/core': ^0.0.5-alpha.12
       enzyme: 3.11.0
       enzyme-adapter-react-16: 1.15.2
       jest: 24.9.0
@@ -166,7 +165,6 @@ importers:
       use-rematch-reducer: 1.1.0
     dependencies:
       '@lotips/core': link:../core
-      '@use-rematch/core': 0.0.5-alpha.12_react@17.0.2
       lodash.debounce: 4.0.8
       lodash.keyby: 4.6.0
       lodash.uniqby: 4.7.0
@@ -2818,13 +2816,6 @@ packages:
       '@octokit/openapi-types': 9.1.1
     dev: true
 
-  /@rematch2/core/0.2.1-alpha.0:
-    resolution: {integrity: sha512-GDUSCHjWaQiIiQkRz81RB0XpeNyW/DsrnmpS91xfCJu3yAssuIXZClHwyq1++NQcpl5kFYDTJKthAbfAhFDtQg==}
-    dependencies:
-      redux: 4.0.4
-      reselect: 4.0.0
-    dev: false
-
   /@rematch2/core/0.2.2:
     resolution: {integrity: sha512-/aIpHjVbKYE7NQ+JtLcVjE7NXf/S10hO/xTfWEMvYMfQM6P90D2SqSkQnQE3YryqoazLenYc8QVMLU+ERwjCHA==}
     dependencies:
@@ -3406,19 +3397,6 @@ packages:
       '@typescript-eslint/types': 4.28.4
       eslint-visitor-keys: 2.1.0
     dev: true
-
-  /@use-rematch/core/0.0.5-alpha.12_react@17.0.2:
-    resolution: {integrity: sha512-Qnv4U/NO1iQI+2mpBw74MTOBrCRfDLm3Qb1srMtt0RpiAxFpAeBl8vCW7ezOlmRdpU13P/RdVeaUwPyy9EWH0A==}
-    peerDependencies:
-      react: latest
-    dependencies:
-      '@rematch2/core': 0.2.1-alpha.0
-      '@rematch2/typings': 0.0.7-alpha.0
-      lodash.flow: 3.5.0
-      react: 17.0.2
-    transitivePeerDependencies:
-      - redux
-    dev: false
 
   /@vitejs/plugin-react-refresh/1.3.5:
     resolution: {integrity: sha512-7c4ELQMygKw5YFCNMLhDHrt4BOgXmROP65gPax/W43mJPNQaYW8ny1kI/bvCDNuzMqZWSK8uf2tEjPVVBnZ5IQ==}
@@ -8674,10 +8652,6 @@ packages:
   /lodash.flattendeep/4.4.0:
     resolution: {integrity: sha1-+wMJF/hqMTTlvJvsDWngAT3f7bI=}
     dev: true
-
-  /lodash.flow/3.5.0:
-    resolution: {integrity: sha1-h79AKSuM+D5OjOGjrkIJ4gBxZ1o=}
-    dev: false
 
   /lodash.get/4.4.2:
     resolution: {integrity: sha1-LRd/ZS+jHpObRDjVNBSZ36OCXpk=}
