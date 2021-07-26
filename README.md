@@ -2,8 +2,6 @@
 
 *a utility/helpers project*
 
-[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
-
 - [@lotips/react](/packages/react/README.md) - for `react`
 - [@lotips/core](/packages/core/README.md) - for `original js/dom`
 - [@lotips/nuxt](/packages/nuxt/README.md) - for `nuxt middlewares/plugins`
