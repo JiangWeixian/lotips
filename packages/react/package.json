@@ -1,14 +1,31 @@
 {
   "name": "@lotips/react",
   "version": "0.8.3-alpha.2",
-  "main": "lib/lotips-react.cjs.js",
-  "module": "lib/lotips-react.esm.js",
-  "typings": "lib/index.d.ts",
   "files": [
     "lib"
   ],
+  "main": "lib/lotips-react.cjs.js",
+  "module": "lib/lotips-react.esm.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "build": "rimraf lib && rollup -c",
+    "dev": "rollup -c -w",
+    "test": "jest",
+    "pretest": "yarn run build",
+    "update": "yarn update && yarn update --save-dev",
+    "check": "yarn outdated && yarn outdated --save-dev"
+  },
   "peerDependencies": {
     "react": "latest"
+  },
+  "dependencies": {
+    "@lotips/core": "^0.8.3-alpha.2",
+    "@use-rematch/core": "^0.0.5-alpha.12",
+    "lodash.debounce": "4.0.8",
+    "lodash.keyby": "4.6.0",
+    "lodash.uniqby": "4.7.0",
+    "lodash.xor": "4.5.0",
+    "use-rematch-reducer": "1.1.0"
   },
   "devDependencies": {
     "@testing-library/react-hooks": "3.2.1",
@@ -37,22 +54,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-    "build": "rimraf lib && rollup -c",
-    "dev": "rollup -c -w",
-    "test": "jest",
-    "pretest": "yarn run build",
-    "update": "yarn update && yarn update --save-dev",
-    "check": "yarn outdated && yarn outdated --save-dev"
-  },
-  "gitHead": "22654d385c8bcb05027ae43a08fb6cad6736836c",
-  "dependencies": {
-    "@lotips/core": "^0.8.3-alpha.2",
-    "@use-rematch/core": "^0.0.5-alpha.12",
-    "lodash.debounce": "4.0.8",
-    "lodash.keyby": "4.6.0",
-    "lodash.uniqby": "4.7.0",
-    "lodash.xor": "4.5.0",
-    "use-rematch-reducer": "1.1.0"
-  }
+  "gitHead": "22654d385c8bcb05027ae43a08fb6cad6736836c"
 }

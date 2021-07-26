@@ -11,14 +11,13 @@ export const doHighlight = (
   highlight: string,
   callback?: (substring: string, ...args: any[]) => string,
 ) => {
-  if (!highlight) {
-    return original
-  }
-  if (callback) {
-    return original.replace(new RegExp('>([^<]*)?(' + highlight + ')([^>]*)?<', 'ig'), callback)
-  }
+  if (!highlight) return original
+
+  if (callback)
+    return original.replace(new RegExp(`>([^<]*)?(${highlight})([^>]*)?<`, 'ig'), callback)
+
   return original.replace(
-    new RegExp('>([^<]*)?(' + highlight + ')([^>]*)?<', 'ig'),
+    new RegExp(`>([^<]*)?(${highlight})([^>]*)?<`, 'ig'),
     '>$1<mark>$2</mark>$3<',
   )
 }

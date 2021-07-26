@@ -9,12 +9,12 @@ describe('use-debounce', () => {
     expect(result.current.debouncedValue).toBe(1)
   })
 
-  test('value should be react, debounced value should be debounced', async () => {
+  test('value should be react, debounced value should be debounced', async() => {
     const { result, waitForNextUpdate } = renderHook(() => useDebounce({ interval: 2000 }))
     act(() => {
       Array(10)
         .fill(0)
-        .forEach(v => {
+        .forEach((v) => {
           result.current.setValue(2)
         })
     })

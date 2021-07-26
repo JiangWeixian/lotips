@@ -14,7 +14,7 @@ export const useVH = () => {
   }, [])
   useEffect(() => {
     setRealHeight()
-  }, [])
+  }, [setRealHeight])
   return {
     setRealHeight,
   }

@@ -3,12 +3,12 @@
 Object.defineProperty(exports, '__esModule', { value: true })
 
 function _interopDefault(ex) {
-  return ex && typeof ex === 'object' && 'default' in ex ? ex['default'] : ex
+  return ex && typeof ex === 'object' && 'default' in ex ? ex.default : ex
 }
 
-var React = require('react')
-var React__default = _interopDefault(React)
-var core = require('@lotips/core')
+const React = require('react')
+const React__default = _interopDefault(React)
+const core = require('@lotips/core')
 
 /**
  * WHY:
@@ -26,14 +26,14 @@ var core = require('@lotips/core')
  * - 适合对同一个ID的对象进行修改。在`Form`中的涉及到重复的初始化的情况，不太合适`useAsyncState`
  * ```
  */
-var useAsyncState = function(value, _a) {
-  var _b = (_a === void 0 ? { nullstate: undefined } : _a).nullstate,
-    nullstate = _b === void 0 ? undefined : _b
-  var _c = React.useState(nullstate),
-    state = _c[0],
-    set = _c[1]
-  var get = React.useMemo(
-    function() {
+const useAsyncState = function(value, _a) {
+  const _b = (_a === void 0 ? { nullstate: undefined } : _a).nullstate
+  const nullstate = _b === void 0 ? undefined : _b
+  const _c = React.useState(nullstate)
+  const state = _c[0]
+  const set = _c[1]
+  const get = React.useMemo(
+    () => {
       return state === nullstate ? value : state
     },
     [value, state, nullstate],
@@ -57,61 +57,64 @@ and limitations under the License.
 ***************************************************************************** */
 
 function __rest(s, e) {
-  var t = {}
-  for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p]
-  if (s != null && typeof Object.getOwnPropertySymbols === 'function')
+  const t = {}
+  for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && !e.includes(p)) t[p] = s[p]
+  if (s != null && typeof Object.getOwnPropertySymbols === 'function') {
     for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-      if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+      if (!e.includes(p[i]) && Object.prototype.propertyIsEnumerable.call(s, p[i]))
         t[p[i]] = s[p[i]]
     }
+  }
   return t
 }
 
 function __awaiter(thisArg, _arguments, P, generator) {
-  return new (P || (P = Promise))(function(resolve, reject) {
+  return new (P || (P = Promise))((resolve, reject) => {
     function fulfilled(value) {
       try {
         step(generator.next(value))
-      } catch (e) {
+      }
+      catch (e) {
         reject(e)
       }
     }
     function rejected(value) {
       try {
-        step(generator['throw'](value))
-      } catch (e) {
+        step(generator.throw(value))
+      }
+      catch (e) {
         reject(e)
       }
     }
     function step(result) {
       result.done
         ? resolve(result.value)
-        : new P(function(resolve) {
-            resolve(result.value)
-          }).then(fulfilled, rejected)
+        : new P((resolve) => {
+          resolve(result.value)
+        }).then(fulfilled, rejected)
     }
     step((generator = generator.apply(thisArg, _arguments || [])).next())
   })
 }
 
 function __generator(thisArg, body) {
-  var _ = {
-      label: 0,
-      sent: function() {
-        if (t[0] & 1) throw t[1]
-        return t[1]
-      },
-      trys: [],
-      ops: [],
+  let _ = {
+    label: 0,
+    sent() {
+      if (t[0] & 1) throw t[1]
+      return t[1]
     },
-    f,
-    y,
-    t,
-    g
+    trys: [],
+    ops: [],
+  }
+  let f
+  let y
+  let t
+  let g
   return (
     (g = { next: verb(0), throw: verb(1), return: verb(2) }),
-    typeof Symbol === 'function' &&
-      (g[Symbol.iterator] = function() {
+    typeof Symbol === 'function'
+      && (g[Symbol.iterator] = function() {
         return this
       }),
     g
@@ -123,18 +126,18 @@ function __generator(thisArg, body) {
   }
   function step(op) {
     if (f) throw new TypeError('Generator is already executing.')
-    while (_)
+    while (_) {
       try {
         if (
           ((f = 1),
-          y &&
-            (t =
-              op[0] & 2
-                ? y['return']
+          y
+            && (t
+              = op[0] & 2
+                ? y.return
                 : op[0]
-                ? y['throw'] || ((t = y['return']) && t.call(y), 0)
-                : y.next) &&
-            !(t = t.call(y, op[1])).done)
+                  ? y.throw || ((t = y.return) && t.call(y), 0)
+                  : y.next)
+            && !(t = t.call(y, op[1])).done)
         )
           return t
         if (((y = 0), t)) op = [op[0] & 2, t.value]
@@ -157,8 +160,8 @@ function __generator(thisArg, body) {
             continue
           default:
             if (
-              !((t = _.trys), (t = t.length > 0 && t[t.length - 1])) &&
-              (op[0] === 6 || op[0] === 2)
+              !((t = _.trys), (t = t.length > 0 && t[t.length - 1]))
+              && (op[0] === 6 || op[0] === 2)
             ) {
               _ = 0
               continue
@@ -182,12 +185,15 @@ function __generator(thisArg, body) {
             continue
         }
         op = body.call(thisArg, _)
-      } catch (e) {
+      }
+      catch (e) {
         op = [6, e]
         y = 0
-      } finally {
+      }
+      finally {
         f = t = 0
       }
+    }
     if (op[0] & 5) throw op[1]
     return { value: op[0] ? op[1] : void 0, done: true }
   }
@@ -196,54 +202,49 @@ function __generator(thisArg, body) {
 /**
  * refs: https://usehooks.com/useOnClickOutside/
  */
-var EMPTY_ELEMENTS = []
+const EMPTY_ELEMENTS = []
 function useClickOutside(ref, _a) {
-  var _b = _a.outsides,
-    outsides = _b === void 0 ? EMPTY_ELEMENTS : _b,
-    _c = _a.insides,
-    insides = _c === void 0 ? EMPTY_ELEMENTS : _c,
-    props = __rest(_a, ['outsides', 'insides'])
-  var isSwitchToTouchMode = core.isMobile()
+  const _b = _a.outsides
+  const outsides = _b === void 0 ? EMPTY_ELEMENTS : _b
+  const _c = _a.insides
+  const insides = _c === void 0 ? EMPTY_ELEMENTS : _c
+  const props = __rest(_a, ['outsides', 'insides'])
+  const isSwitchToTouchMode = core.isMobile()
   React.useEffect(
-    function() {
-      var listener = function(event) {
-        var _a, _b, _c, _d, _e, _f
+    () => {
+      const listener = function(event) {
+        let _a, _b, _c, _d, _e, _f
         // Do nothing if clicking ref's element or descendent elements
-        if (!ref.current) {
+        if (!ref.current)
           return
-        }
+
         if (
-          outsides.some(function(v) {
-            return v === event.target
-          })
+          outsides.includes(event.target)
         ) {
-          ;(_b = (_a = props).onClickOutside) === null || _b === void 0
+          (_b = (_a = props).onClickOutside) === null || _b === void 0
             ? void 0
             : _b.call(_a, event)
           return
         }
         if (
-          ref.current.contains(event.target) ||
-          insides.some(function(v) {
-            return v === event.target
-          })
+          ref.current.contains(event.target)
+          || insides.includes(event.target)
         ) {
-          ;(_d = (_c = props).onClickInside) === null || _d === void 0 ? void 0 : _d.call(_c, event)
+          (_d = (_c = props).onClickInside) === null || _d === void 0 ? void 0 : _d.call(_c, event)
           return
         }
-        ;(_f = (_e = props).onClickOutside) === null || _f === void 0 ? void 0 : _f.call(_e, event)
+        (_f = (_e = props).onClickOutside) === null || _f === void 0 ? void 0 : _f.call(_e, event)
       }
-      if (!isSwitchToTouchMode) {
+      if (!isSwitchToTouchMode)
         document.addEventListener('mousedown', listener)
-      } else {
+      else
         document.addEventListener('touchstart', listener)
-      }
+
       return function() {
-        if (!isSwitchToTouchMode) {
+        if (!isSwitchToTouchMode)
           document.removeEventListener('mousedown', listener)
-        } else {
+        else
           document.removeEventListener('touchstart', listener)
-        }
       }
     },
     // Add ref and handler to effect dependencies
@@ -266,18 +267,18 @@ function useClickOutside(ref, _a) {
  * - debouncedValue - 是最后生效的数据，用于filter数据请求
  * - value - 实际修改的数据，用于filter数据展示
  */
-var useDebounce = function(_a) {
-  var interval = _a.interval,
-    props = __rest(_a, ['interval'])
-  var _b = React.useState(props.defaultValue),
-    value = _b[0],
-    setValue = _b[1]
-  var _c = React.useState(props.defaultValue),
-    debouncedValue = _c[0],
-    setDebouncedValue = _c[1]
+const useDebounce = function(_a) {
+  const interval = _a.interval
+  const props = __rest(_a, ['interval'])
+  const _b = React.useState(props.defaultValue)
+  const value = _b[0]
+  const setValue = _b[1]
+  const _c = React.useState(props.defaultValue)
+  const debouncedValue = _c[0]
+  const setDebouncedValue = _c[1]
   React.useEffect(
-    function() {
-      var timer = setTimeout(function() {
+    () => {
+      const timer = setTimeout(() => {
         setDebouncedValue(value)
       }, interval)
       return function() {
@@ -287,9 +288,9 @@ var useDebounce = function(_a) {
     [value, interval],
   )
   return {
-    value: value,
-    debouncedValue: debouncedValue,
-    setValue: setValue,
+    value,
+    debouncedValue,
+    setValue,
   }
 }
 
@@ -300,54 +301,54 @@ var useDebounce = function(_a) {
  * NOTE:
  * 当然可以收集列表数据时候请求，该hook只是为了使用更方便。
  */
-var buffer = {}
-var running = {}
-var interval = 10
+const buffer = {}
+const running = {}
+const interval = 10
 var listByIds = function(type, fetcher) {
   return __awaiter(void 0, void 0, void 0, function() {
-    var keys, data
-    return __generator(this, function(_a) {
+    let keys, data
+    return __generator(this, (_a) => {
       switch (_a.label) {
         case 0:
           keys = Object.keys(buffer[type])
           if (keys.length === 0) {
             running[type] = false
-            return [2 /*return*/]
+            return [2]
           }
-          return [4 /*yield*/, fetcher(keys)]
+          return [4 /* yield */, fetcher(keys)]
         case 1:
           data = _a.sent()
-          keys.forEach(function(k, i) {
-            var callbacks = buffer[type][k]
+          keys.forEach((k, i) => {
+            const callbacks = buffer[type][k]
             delete buffer[type][k]
-            callbacks.forEach(function(callback) {
+            callbacks.forEach((callback) => {
               callback(data[i] || undefined)
             })
           })
-          setTimeout(function() {
+          setTimeout(() => {
             return listByIds(type, fetcher)
           }, interval)
-          return [2 /*return*/]
+          return [2]
       }
     })
   })
 }
-var useBatch = function(type, id, api) {
-  var _a = React.useState(),
-    item = _a[0],
-    setItem = _a[1]
+const useBatch = function(type, id, api) {
+  const _a = React.useState()
+  const item = _a[0]
+  const setItem = _a[1]
   React.useEffect(
-    function() {
-      if (!id) {
+    () => {
+      if (!id)
         return
-      }
-      new Promise(function(resolve) {
+
+      new Promise((resolve) => {
         buffer[type] = buffer[type] || {}
         buffer[type][id] = buffer[type][id] || []
         buffer[type][id].push(resolve)
         if (!running[type]) {
           running[type] = true
-          setTimeout(function() {
+          setTimeout(() => {
             return listByIds(type, api)
           }, interval)
         }
@@ -362,22 +363,22 @@ var useBatch = function(type, id, api) {
  * WHY:
  * component ref只能用于一些已经挂载的元素。但是一般都是使用`useRef`存储，本身是一个无状态的行为。所以需要额外进行标识。
  */
-var useMount = function() {
-  var _a = React.useState(false),
-    mounted = _a[0],
-    setMounted = _a[1]
-  React.useEffect(function() {
+const useMount = function() {
+  const _a = React.useState(false)
+  const mounted = _a[0]
+  const setMounted = _a[1]
+  React.useEffect(() => {
     setMounted(true)
   }, [])
   return mounted
 }
 
-var useWindowResize = function() {
-  var _a = React.useState(false),
-    resizeing = _a[0],
-    setResizing = _a[1]
-  React.useEffect(function() {
-    var listener = function() {
+const useWindowResize = function() {
+  const _a = React.useState(false)
+  const resizeing = _a[0]
+  const setResizing = _a[1]
+  React.useEffect(() => {
+    const listener = function() {
       setResizing(true)
     }
     window.addEventListener('resize', listener)
@@ -386,7 +387,7 @@ var useWindowResize = function() {
     }
   }, [])
   return {
-    resizeing: resizeing,
+    resizeing,
   }
 }
 
@@ -396,11 +397,11 @@ var useWindowResize = function() {
  * WARNING:
  * - `<><componenta /></>`和`<componenta />`不相同
  */
-var hasComponentOfA = function(children, target) {
-  return React.Children.toArray(children).some(function(child) {
-    if (React.isValidElement(child)) {
+const hasComponentOfA = function(children, target) {
+  return React.Children.toArray(children).some((child) => {
+    if (React.isValidElement(child))
       return child.type === target
-    }
+
     return false
   })
 }
@@ -411,8 +412,8 @@ var hasComponentOfA = function(children, target) {
  * WARNING:
  * - `<><componenta /></>`和`<componenta />`不相同
  */
-var getComponentsNotOfA = function(children, target) {
-  return React__default.Children.map(children, function(child) {
+const getComponentsNotOfA = function(children, target) {
+  return React__default.Children.map(children, (child) => {
     return !hasComponentOfA(child, target) ? child : null
   })
 }
@@ -423,8 +424,8 @@ var getComponentsNotOfA = function(children, target) {
  * WARNING:
  * - `<><componenta /></>`和`<componenta />`不相同
  */
-var getComponentsOfA = function(children, target) {
-  return React__default.Children.map(children, function(child) {
+const getComponentsOfA = function(children, target) {
+  return React__default.Children.map(children, (child) => {
     return hasComponentOfA(child, target) ? child : null
   })
 }

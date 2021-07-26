@@ -1,3 +1,6 @@
+/**
+ * TODO: deprecated to use-rematch
+ */
 import { useRematchReducer } from '@use-rematch/core'
 import { useCallback, useRef } from 'react'
 import debounce from 'lodash.debounce'
@@ -83,7 +86,7 @@ export const useLoadmore = <T = any, F = any, L = any>({
       dispatch.setFilter(next)
       refresh.current()
     },
-    [dispatch.setFilter, state.filter, refresh],
+    [dispatch, state.filter, refresh],
   )
   const handleSetFilterByField = useCallback(
     <K extends keyof F>(filed: K, value: F[K]) => {
@@ -91,16 +94,16 @@ export const useLoadmore = <T = any, F = any, L = any>({
       dispatch.setFilter(next as F)
       refresh.current()
     },
-    [dispatch.setFilter, state.filter, dispatch.handleRefresh],
+    [dispatch, state.filter],
   )
   const handleResetFilter = useCallback(() => {
     dispatch.setFilter(defaultFilter as F)
     refresh.current()
-  }, [dispatch.setFilter, defaultFilter, dispatch.handleRefresh])
+  }, [dispatch, defaultFilter])
   const handleClearFilter = useCallback(() => {
     dispatch.clearFilter()
     refresh.current()
-  }, [dispatch.setFilter, dispatch.handleRefresh])
+  }, [dispatch])
   return {
     state,
     dispatch: {

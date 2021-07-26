@@ -6,7 +6,7 @@ import { delay } from '../utils/delay'
 const AsyncEffectContext = React.createContext(1)
 
 describe('use-async-effect', () => {
-  test('work with async function', async () => {
+  test('work with async function', async() => {
     const _useAsyncEffect = () => {
       const value = useContext(AsyncEffectContext)
       return {
@@ -15,7 +15,7 @@ describe('use-async-effect', () => {
     }
     const AsyncEffectProvider = ({ children }) => {
       const [value, setValue] = useState(1)
-      useAsyncEffect(async () => {
+      useAsyncEffect(async() => {
         await delay(1000)
         setValue(2)
       }, [])
@@ -26,11 +26,11 @@ describe('use-async-effect', () => {
     expect(hook.result.current.value).toBe(2)
   })
 
-  test('clear function shoud work fine', async () => {
+  test('clear function shoud work fine', async() => {
     let reseted = 0
     const _useAsyncEffect = () => {
       const [value, setValue] = useState()
-      useAsyncEffect(async () => {
+      useAsyncEffect(async() => {
         return () => {
           reseted += 1
         }

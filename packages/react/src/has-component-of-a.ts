@@ -9,9 +9,8 @@ import React, { Children, isValidElement } from 'react'
 
 export const hasComponentOfA = (children: React.ReactNode, target?: React.ComponentType<any>) => {
   return Children.toArray(children).some(child => {
-    if (isValidElement(child)) {
-      return child.type === target
-    }
+    if (isValidElement(child)) return child.type === target
+
     return false
   })
 }

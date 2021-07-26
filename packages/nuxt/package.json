@@ -5,6 +5,14 @@
   "module": "lib/lotips-nuxt.esm.js",
   "browser": "lib/lotips-nuxt.umd.js",
   "typings": "lib/index.d.ts",
+  "scripts": {
+    "build": "rimraf lib && rollup -c",
+    "dev": "rollup -c -w",
+    "test": "ts-node test/test.ts",
+    "pretest": "npm run build",
+    "update": "npm update && npm update --save-dev",
+    "check": "npm outdated && npm outdated --save-dev"
+  },
   "devDependencies": {
     "@nuxt/types": "0.6.4",
     "@testing-library/react-hooks": "3.2.1",
@@ -24,14 +32,6 @@
     "tslib": "1.9.3",
     "typescript": "3.7.2",
     "vue": "2.6.11"
-  },
-  "scripts": {
-    "build": "rimraf lib && rollup -c",
-    "dev": "rollup -c -w",
-    "test": "ts-node test/test.ts",
-    "pretest": "npm run build",
-    "update": "npm update && npm update --save-dev",
-    "check": "npm outdated && npm outdated --save-dev"
   },
   "publishConfig": {
     "access": "public"

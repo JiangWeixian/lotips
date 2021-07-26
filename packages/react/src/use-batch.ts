@@ -38,9 +38,8 @@ export const useBatch = <D = any>(
 ) => {
   const [item, setItem] = useState<D>()
   useEffect(() => {
-    if (!id) {
-      return
-    }
+    if (!id) return
+
     new Promise<D>(resolve => {
       buffer[type] = buffer[type] || {}
       buffer[type][id] = buffer[type][id] || []
@@ -50,7 +49,7 @@ export const useBatch = <D = any>(
         setTimeout(() => listByIds(type, api), interval)
       }
     }).then(setItem)
-  }, [type, id])
+  }, [type, id, api])
 
   return item
 }

@@ -16,40 +16,38 @@ export type UseClickOutsideProps = {
 
 export function useClickOutside(
   ref: React.MutableRefObject<HTMLElement | null | undefined>,
-  { outsides = EMPTY_ELEMENTS, insides = EMPTY_ELEMENTS, ...props }: UseClickOutsideProps,
+  {
+    outsides = EMPTY_ELEMENTS,
+    insides = EMPTY_ELEMENTS,
+    onClickInside,
+    onClickOutside,
+  }: UseClickOutsideProps,
 ) {
   const isSwitchToTouchMode = isMobile()
   useEffect(
     () => {
       const listener = (event: MouseEvent | TouchEvent) => {
         // Do nothing if clicking ref's element or descendent elements
-        if (!ref.current) {
+        if (!ref.current) return
+
+        if (outsides.includes(event.target)) {
+          onClickOutside?.(event)
           return
         }
-        if (outsides.some(v => v === event.target)) {
-          props.onClickOutside?.(event)
-          return
-        }
-        if (ref.current.contains(event.target as Node) || insides.some(v => v === event.target)) {
-          props.onClickInside?.(event)
+        if (ref.current.contains(event.target as Node) || insides.includes(event.target)) {
+          onClickInside?.(event)
           return
         }
 
-        props.onClickOutside?.(event)
+        onClickOutside?.(event)
       }
 
-      if (!isSwitchToTouchMode) {
-        document.addEventListener('mousedown', listener)
-      } else {
-        document.addEventListener('touchstart', listener)
-      }
+      if (!isSwitchToTouchMode) document.addEventListener('mousedown', listener)
+      else document.addEventListener('touchstart', listener)
 
       return () => {
-        if (!isSwitchToTouchMode) {
-          document.removeEventListener('mousedown', listener)
-        } else {
-          document.removeEventListener('touchstart', listener)
-        }
+        if (!isSwitchToTouchMode) document.removeEventListener('mousedown', listener)
+        else document.removeEventListener('touchstart', listener)
       }
     },
     // Add ref and handler to effect dependencies
@@ -58,6 +56,6 @@ export function useClickOutside(
     // ... callback/cleanup to run every render. It's not a big deal ...
     // ... but to optimize you can wrap handler in useCallback before ...
     // ... passing it into this hook.
-    [ref, props.onClickInside, props.onClickOutside, outsides, insides, isSwitchToTouchMode],
+    [ref, onClickInside, onClickOutside, outsides, insides, isSwitchToTouchMode],
   )
 }

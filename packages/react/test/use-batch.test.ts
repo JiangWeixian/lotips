@@ -3,13 +3,13 @@ import { renderHook } from '@testing-library/react-hooks'
 import { delay } from '../utils/delay'
 
 let cnt = 0
-const api = async (_ids: string[]) => {
+const api = async(_ids: string[]) => {
   cnt += 1
   return [1]
 }
 
 describe('use-batch', () => {
-  test('combined into a batch request', async () => {
+  test('combined into a batch request', async() => {
     const hook1 = renderHook(() => useBatch('use-batch', '1', api))
     const hook2 = renderHook(() => useBatch('use-batch', '1', api))
     const hook3 = renderHook(() => useBatch('use-batch', '1', api))

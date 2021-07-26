@@ -22,7 +22,7 @@ export const useClipboardObserver = ({ interval = 1000 }) => {
       }, interval)
     }
     return () => (intervaler.current = undefined)
-  }, [])
+  }, [interval, text])
   return {
     text,
   }

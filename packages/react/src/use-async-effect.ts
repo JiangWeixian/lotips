@@ -1,7 +1,5 @@
 import { useEffect } from 'react'
 
-const EMPTY_DEPS: any[] = []
-
 export const useAsyncEffect = (
   callback: () => Promise<Function | undefined | void>,
   deps?: any[],
@@ -13,5 +11,5 @@ export const useAsyncEffect = (
     }
     asyncEffect()
     return () => result && result()
-  }, [(deps ?? EMPTY_DEPS).concat([callback])])
+  }, [deps, callback])
 }

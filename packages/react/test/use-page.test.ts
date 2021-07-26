@@ -5,7 +5,7 @@ describe('use-page', () => {
   test('default state should work fine', () => {
     const hook = renderHook(() =>
       usePage({
-        api: async (params: { skip: number; limit: number; filter: { text: string } }) => {
+        api: async(params: { skip: number; limit: number; filter: { text: string } }) => {
           return { data: [1], total: 3 }
         },
         defaultFilter: { text: '' },
@@ -27,10 +27,10 @@ describe('use-page', () => {
     })
   })
 
-  test('reinit should work fine', async () => {
+  test('reinit should work fine', async() => {
     const hook = renderHook(() =>
       usePage({
-        api: async (params: { skip: number; limit: number; filter: { text: string } }) => {
+        api: async(params: { skip: number; limit: number; filter: { text: string } }) => {
           return { data: [{ id: 1 }], total: 100 }
         },
         defaultFilter: { text: '' },
@@ -45,11 +45,11 @@ describe('use-page', () => {
     expect(hook.result.current.state.pages).toBe(10)
   })
 
-  test('set filter should work in debounce mode', async () => {
+  test('set filter should work in debounce mode', async() => {
     let cnt = 0
     const hook = renderHook(() =>
       usePage({
-        api: async (params: { skip: number; limit: number; filter: { text: string } }) => {
+        api: async(params: { skip: number; limit: number; filter: { text: string } }) => {
           cnt += 1
           return { data: [{ id: 1 }], total: 100 }
         },
@@ -61,7 +61,7 @@ describe('use-page', () => {
 
     Array(10)
       .fill(0)
-      .forEach(v => {
+      .forEach((v) => {
         hook.result.current.dispatch.handleClearFilter()
       })
     await hook.waitForNextUpdate()
@@ -71,7 +71,7 @@ describe('use-page', () => {
   test('filter clear & set should work fine', () => {
     const hook = renderHook(() =>
       usePage({
-        api: async (params: { skip: number; limit: number; filter: { text: string } }) => {
+        api: async(params: { skip: number; limit: number; filter: { text: string } }) => {
           return { data: [{ id: 1 }], total: 100 }
         },
         defaultFilter: { text: '' },
@@ -87,12 +87,12 @@ describe('use-page', () => {
     expect(hook.result.current.state.filter).toMatchObject({ text: '2' })
   })
 
-  test('next, prev, go should change current correct', async () => {
+  test('next, prev, go should change current correct', async() => {
     let cnt = 0
     const list = [{ id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }]
     const hook = renderHook(() =>
       usePage({
-        api: async (params: { skip: number; limit: number; filter: { text: string } }) => {
+        api: async(params: { skip: number; limit: number; filter: { text: string } }) => {
           cnt += 1
           return { data: [list[cnt]], total: 100 }
         },
@@ -110,12 +110,12 @@ describe('use-page', () => {
     expect(cnt).toBe(3)
   })
 
-  test('next, prev, go should change current correct', async () => {
+  test('next, prev, go should change current correct', async() => {
     let cnt = 0
     const list = [{ id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }]
     const hook = renderHook(() =>
       usePage({
-        api: async (params: { skip: number; limit: number; filter: { text: string } }) => {
+        api: async(params: { skip: number; limit: number; filter: { text: string } }) => {
           cnt += 1
           return { data: [list[cnt]], total: 100 }
         },
@@ -134,10 +134,10 @@ describe('use-page', () => {
     expect(hook.result.current.state.data).toMatchObject([{ id: 1 }, { id: 2 }, { id: 3 }])
   })
 
-  test('status should change correct', async () => {
+  test('status should change correct', async() => {
     const hook = renderHook(() =>
       usePage({
-        api: async (params: { skip: number; limit: number; filter: { text: string } }) => {
+        api: async(params: { skip: number; limit: number; filter: { text: string } }) => {
           return { data: [{ id: 0 }], total: 100 }
         },
         defaultFilter: { text: '' },
@@ -154,7 +154,7 @@ describe('use-page', () => {
   test('set selected should work fine', () => {
     const hook = renderHook(() =>
       usePage({
-        api: async (params: { skip: number; limit: number; filter: { text: string } }) => {
+        api: async(params: { skip: number; limit: number; filter: { text: string } }) => {
           return { data: [{ id: '1' }], total: 100 }
         },
         defaultFilter: { text: '' },
