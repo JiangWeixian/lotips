@@ -1,3 +1,3 @@
 export declare const useWindowResize: () => {
-  resizeing: boolean
-}
+    resizeing: boolean;
+};

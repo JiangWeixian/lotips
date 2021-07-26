@@ -5,8 +5,4 @@
  * NOTE:
  * 当然可以收集列表数据时候请求，该hook只是为了使用更方便。
  */
-export declare const useBatch: <D = any>(
-  type: string,
-  id: string,
-  api: (ids: string[]) => Promise<D[]>,
-) => D | undefined
+export declare const useBatch: <D = any>(type: string, id: string, api: (ids: string[]) => Promise<D[]>) => D | undefined;

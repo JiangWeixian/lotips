@@ -11,9 +11,9 @@
     "build": "rimraf lib && rollup -c",
     "dev": "rollup -c -w",
     "test": "jest",
-    "pretest": "yarn run build",
-    "update": "yarn update && yarn update --save-dev",
-    "check": "yarn outdated && yarn outdated --save-dev"
+    "pretest": "pnpm run build",
+    "update": "pnpm update && pnpm update --save-dev",
+    "check": "pnpm outdated && pnpm outdated --save-dev"
   },
   "peerDependencies": {
     "react": "latest"

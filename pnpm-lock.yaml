@@ -113,9 +113,10 @@ importers:
       tslib: 1.9.3
       typescript: 3.7.2
       vue: 2.6.11
+      vue-router: ^3.5.2
     devDependencies:
       '@nuxt/types': 0.6.4
-      '@testing-library/react-hooks': 3.2.1_react@16.14.0
+      '@testing-library/react-hooks': 3.2.1
       '@types/lodash.debounce': 4.0.6
       '@types/lodash.keyby': 4.6.6
       '@types/lodash.uniqby': 4.7.6
@@ -132,6 +133,7 @@ importers:
       tslib: 1.9.3
       typescript: 3.7.2
       vue: 2.6.11
+      vue-router: 3.5.2
 
   packages/react:
     specifiers:
@@ -2850,6 +2852,16 @@ packages:
       react-test-renderer: 16.13.0_react@17.0.2
     dev: true
 
+  /@testing-library/react-hooks/3.2.1:
+    resolution: {integrity: sha512-1OB6Ksvlk6BCJA1xpj8/WWz0XVd1qRcgqdaFAq+xeC6l61Ucj0P6QpA5u+Db/x9gU4DCX8ziR5b66Mlfg0M2RA==}
+    peerDependencies:
+      react: '>=16.9.0'
+      react-test-renderer: '>=16.9.0'
+    dependencies:
+      '@babel/runtime': 7.14.8
+      '@types/testing-library__react-hooks': 3.4.1
+    dev: true
+
   /@testing-library/react-hooks/3.2.1_cc0d7e275eb9d7b612b6371ada8d966f:
     resolution: {integrity: sha512-1OB6Ksvlk6BCJA1xpj8/WWz0XVd1qRcgqdaFAq+xeC6l61Ucj0P6QpA5u+Db/x9gU4DCX8ziR5b66Mlfg0M2RA==}
     peerDependencies:
@@ -2860,17 +2872,6 @@ packages:
       '@types/testing-library__react-hooks': 3.4.1
       react: 17.0.2
       react-test-renderer: 16.13.0_react@17.0.2
-    dev: true
-
-  /@testing-library/react-hooks/3.2.1_react@16.14.0:
-    resolution: {integrity: sha512-1OB6Ksvlk6BCJA1xpj8/WWz0XVd1qRcgqdaFAq+xeC6l61Ucj0P6QpA5u+Db/x9gU4DCX8ziR5b66Mlfg0M2RA==}
-    peerDependencies:
-      react: '>=16.9.0'
-      react-test-renderer: '>=16.9.0'
-    dependencies:
-      '@babel/runtime': 7.14.8
-      '@types/testing-library__react-hooks': 3.4.1
-      react: 16.14.0
     dev: true
 
   /@types/autoprefixer/9.7.2:
@@ -13084,6 +13085,10 @@ packages:
 
   /vm-browserify/1.1.2:
     resolution: {integrity: sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==}
+    dev: true
+
+  /vue-router/3.5.2:
+    resolution: {integrity: sha512-807gn82hTnjCYGrnF3eNmIw/dk7/GE4B5h69BlyCK9KHASwSloD1Sjcn06zg9fVG4fYH2DrsNBZkpLtb25WtaQ==}
     dev: true
 
   /vue/2.6.11:

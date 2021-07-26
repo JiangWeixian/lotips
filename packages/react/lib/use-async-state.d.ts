@@ -14,11 +14,8 @@
  * - 适合对同一个ID的对象进行修改。在`Form`中的涉及到重复的初始化的情况，不太合适`useAsyncState`
  * ```
  */
-import React from 'react'
+import React from 'react';
 export declare type UseAsyncStateProps = {
-  nullstate?: any
-}
-export declare const useAsyncState: <T>(
-  value?: T | undefined,
-  { nullstate }?: UseAsyncStateProps,
-) => [T, React.Dispatch<React.SetStateAction<T>>]
+    nullstate?: any;
+};
+export declare const useAsyncState: <T>(value?: T | undefined, { nullstate }?: UseAsyncStateProps) => [T, React.Dispatch<React.SetStateAction<T>>];

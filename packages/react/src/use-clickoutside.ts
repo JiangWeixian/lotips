@@ -10,8 +10,8 @@ const EMPTY_ELEMENTS: Element[] = []
 export type UseClickOutsideProps = {
   onClickOutside?(event: MouseEvent | TouchEvent): void
   onClickInside?(event: MouseEvent | TouchEvent): void
-  outsides?: Element[]
-  insides?: Element[]
+  outsides?: any[]
+  insides?: any[]
 }
 
 export function useClickOutside(
@@ -28,9 +28,9 @@ export function useClickOutside(
     () => {
       const listener = (event: MouseEvent | TouchEvent) => {
         // Do nothing if clicking ref's element or descendent elements
-        if (!ref.current) return
+        if (!ref.current || !event.target) return
 
-        if (outsides.includes(event.target)) {
+        if (event.target && outsides.includes(event.target)) {
           onClickOutside?.(event)
           return
         }

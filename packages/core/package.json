@@ -9,9 +9,9 @@
     "build": "rimraf lib && rollup -c",
     "dev": "rollup -c -w",
     "test": "ts-node test/test.ts",
-    "pretest": "npm run build",
-    "update": "npm update && npm update --save-dev",
-    "check": "npm outdated && npm outdated --save-dev"
+    "pretest": "pnpm run build",
+    "update": "pnpm update && pnpm update --save-dev",
+    "check": "pnpm outdated && pnpm outdated --save-dev"
   },
   "dependencies": {
     "is-mobile": "^2.2.1",

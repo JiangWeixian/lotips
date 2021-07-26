@@ -1,6 +1,7 @@
 {
   "name": "lotips",
   "scripts": {
+    "build:all": "pnpm run build -r",
     "lint:fix": "eslint . --fix"
   },
   "husky": {

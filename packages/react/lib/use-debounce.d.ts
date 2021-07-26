@@ -10,15 +10,12 @@
  */
 /// <reference types="react" />
 declare type UseDebounceProps<T = any> = {
-  interval?: number
-  defaultValue?: T
-}
-export declare const useDebounce: <T>({
-  interval,
-  ...props
-}: UseDebounceProps<T>) => {
-  value: T | undefined
-  debouncedValue: T | undefined
-  setValue: import('react').Dispatch<import('react').SetStateAction<T | undefined>>
-}
-export {}
+    interval?: number;
+    defaultValue?: T;
+};
+export declare const useDebounce: <T>({ interval, ...props }: UseDebounceProps<T>) => {
+    value: T | undefined;
+    debouncedValue: T | undefined;
+    setValue: import("react").Dispatch<import("react").SetStateAction<T | undefined>>;
+};
+export {};
