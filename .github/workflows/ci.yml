@@ -1,33 +1,33 @@
-name: lotips/react CI
+name: Node.js CI
 
 on:
   push:
-    paths:
-      - 'packages/react/**'
-    branches: [master]
   pull_request:
-    paths:
-      - 'packages/react/**'
-    branches: [master]
+    branches: [master,release]
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    name: React
+    name: test
 
     strategy:
       matrix:
         node-version: [12.x, 14.x, 16.x]
 
     steps:
-      - name: Checkout
+      - name: checkout code repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Test
-        working-directory: ./packages/react
+      - name: Install pnpm
+        run: npm i pnpm@latest -g
+      - name: Install 
         run: |
-          yarn
-          yarn test
+          pnpm install --frozen-lockfile=false
+      - name: Test
+        run: |
+          pnpm test
