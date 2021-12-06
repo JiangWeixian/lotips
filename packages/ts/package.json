@@ -1,16 +1,16 @@
 {
-  "homepage": "https://github.com/JiangWeixian/lotips#readme",
-  "bugs": {
-    "url": "https://github.com/JiangWeixian/lotips/issues",
-    "email": "jiangweixian1994@gmail.com"
-  },
   "name": "@lotips/ts",
   "version": "1.0.1",
   "license": "MIT",
+  "homepage": "https://github.com/JiangWeixian/lotips#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/JiangWeixian/lotips",
     "directory": "packages/ts"
+  },
+  "bugs": {
+    "url": "https://github.com/JiangWeixian/lotips/issues",
+    "email": "jiangweixian1994@gmail.com"
   },
   "author": "JW <jiangweixian1994@gmail.com> (https://twitter.com/jiangweixian)",
   "main": "lib/ts.cjs.js",

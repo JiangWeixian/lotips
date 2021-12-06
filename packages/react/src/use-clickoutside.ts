@@ -30,11 +30,14 @@ export function useClickOutside(
         // Do nothing if clicking ref's element or descendent elements
         if (!ref.current || !event.target) return
 
-        if (event.target && outsides.includes(event.target)) {
+        if (event.target && outsides.some(v => v.contains(event.target))) {
           onClickOutside?.(event)
           return
         }
-        if (ref.current.contains(event.target as Node) || insides.includes(event.target)) {
+        if (
+          ref.current.contains(event.target as Node) ||
+          insides.some(v => v.contains(event.target))
+        ) {
           onClickInside?.(event)
           return
         }
