@@ -1,6 +1,8 @@
 import commonjs from '@rollup/plugin-commonjs'
 import typescript from 'rollup-plugin-typescript2'
 import alias from '@rollup/plugin-alias'
+import externals from 'rollup-plugin-node-externals'
+import nodeResolve from '@rollup/plugin-node-resolve'
 import { defineConfig } from 'rollup'
 
 export default defineConfig([
@@ -19,6 +21,10 @@ export default defineConfig([
         }
       }), // so Rollup can convert TypeScript to JavaScript
       commonjs(),
+      externals({
+        devDeps: false,
+      }),
+      nodeResolve(),
       alias({
         resolve: ['.ts', '.js', '.tsx', '.jsx'],
         entries: [{ find: '@/', replacement: './src/' }],
