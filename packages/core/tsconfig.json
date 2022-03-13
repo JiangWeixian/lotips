@@ -20,5 +20,5 @@
       "@/*": ["src/*"]
     }
   },
-  "exclude": ["node_modules", "lib", "test", "utils"]
+  "exclude": ["node_modules"]
 }

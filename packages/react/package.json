@@ -1,12 +1,12 @@
 {
   "name": "@lotips/react",
   "version": "0.8.4",
-  "files": [
-    "lib"
-  ],
   "main": "lib/lotips-react.cjs.js",
   "module": "lib/lotips-react.esm.js",
   "typings": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "build": "rimraf lib && rollup -c",
     "dev": "rollup -c -w",
