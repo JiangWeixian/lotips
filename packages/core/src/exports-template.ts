@@ -90,6 +90,12 @@ export const exportsTemplate = ({
     })
     return results
   }
+  const prettyName = (name: string) => {
+    if (name.endsWith('/index')) {
+      return name.slice(0, -6)
+    }
+    return name
+  }
   names.forEach(name => {
     if (name === 'index') {
       pkg.exports['.'] = subExport('index')
@@ -99,10 +105,11 @@ export const exportsTemplate = ({
         pkg.types = pkg.exports['.'].types.slice(2)
       }
     } else {
-      pkg.exports[`./${name}`] = subExport(name)
+      const _name = prettyName(name)
+      pkg.exports[`./${_name}`] = subExport(name)
       if (_types) {
-        pkg.typesVersions!['*'][`${_types.dir}/${name}`] = [
-          (pkg.exports[`./${name}`] as Record<string, string>).types.slice(2).replace('.d.ts', ''),
+        pkg.typesVersions!['*'][_name] = [
+          (pkg.exports[`./${_name}`] as Record<string, string>).types.slice(2),
         ]
       }
     }

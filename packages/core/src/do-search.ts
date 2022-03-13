@@ -1,8 +1,6 @@
 /**
- * WHY:
- * a simple way to highlight content on website
- * WARNING:
- * now it's not working on textarea
+ * @fileoverview a simple way to highlight content on website
+ * @waring now it's not working on textarea
  */
 
 // tslint:disable:no-any

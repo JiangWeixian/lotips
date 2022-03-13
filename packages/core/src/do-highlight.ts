@@ -1,8 +1,7 @@
 /**
- * NOTE:
- * if webcontent come from can be use with markdown render, and __html
+ * @fileoverview if webcontent come from can be use with markdown render, and __html
  * use for hightlight keyword by replacing with a html tag
- * Refs:
+ * @see:
  * - https://www.eriwen.com/javascript/highlight-search-results-with-js/
  */
 

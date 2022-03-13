@@ -35,6 +35,12 @@
   "config": {
     "commitizen": {
       "path": "cz-emoji"
+    },
+    "cz-emoji": {
+      "scopes": [
+        "config",
+        "core"
+      ]
     }
   }
 }
