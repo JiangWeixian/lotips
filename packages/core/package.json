@@ -35,6 +35,11 @@
       "import": "./dist/ua.mjs",
       "types": "./dist/ua.d.ts"
     },
+    "./exports-template": {
+      "require": "./dist/exports-template.cjs",
+      "import": "./dist/exports-template.mjs",
+      "types": "./dist/exports-template.d.ts"
+    },
     "./do-highlight": {
       "require": "./dist/do-highlight.cjs",
       "import": "./dist/do-highlight.mjs",
@@ -56,6 +61,9 @@
     "*": {
       "ua": [
         "dist/ua.d.ts"
+      ],
+      "exports-template": [
+        "dist/exports-template.d.ts"
       ],
       "do-highlight": [
         "dist/do-highlight.d.ts"
