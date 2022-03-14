@@ -1,6 +1,7 @@
 /**
  * @description a simple way to highlight content on website
  * @waring now it's not working on textarea
+ * @category dom
  */
 export function doSearch(
   text: string,
