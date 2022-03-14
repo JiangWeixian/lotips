@@ -1,6 +1,28 @@
 {
   "name": "@lotips/core",
   "version": "0.8.3",
+  "description": "utility function collections",
+  "keywords": [
+    "jiangweixian",
+    "utils",
+    "lotips"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JiangWeixian/lotips",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/JiangWeixian/lotips/issues"
+  },
+  "funding": "https://github.com/sponsors/Jiangweixian",
+  "author": {
+    "name": "JiangWeixian"
+  },
+  "engines": {
+    "node": ">=12.20"
+  },
   "exports": {
     "./package.json": "./package.json",
     ".": {
@@ -24,6 +46,12 @@
       "types": "./dist/do-search.d.ts"
     }
   },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "typesVersions": {
     "*": {
       "ua": [
@@ -37,9 +65,6 @@
       ]
     }
   },
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
   "scripts": {
     "build": "rimraf dist && rollup -c",
     "dev": "rollup -c -w",

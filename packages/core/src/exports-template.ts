@@ -30,6 +30,13 @@ type PartPkg = {
   typesVersions?: Record<string, Record<string, string[]>>
 }
 
+/**
+ * @description generate package.json exports/typesVersions/main/module/types field
+ * @category template
+ * @example exportsTemplate({
+ *  names: ['index', 'ua', 'do-something/index']
+ * })
+ */
 export const exportsTemplate = ({
   names,
   formats = ['cjs', 'esm'],
