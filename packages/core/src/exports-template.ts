@@ -1,20 +1,39 @@
 import uniq from 'lodash-es/uniq'
+import isEmpty from 'lodash-es/isEmpty'
 
-type ExportsTemplateParams = {
+export type ExportsTemplateParams = {
+  /**
+   * Exported module names
+   */
   names: string[]
+  /**
+   * Exported formats, impact `exports.require` or `exports.import`
+   * @default ['cjs', 'esm']
+   */
   formats?: Array<'cjs' | 'esm' | 'es'>
+  /**
+   * Bundled files dir
+   * @default dist
+   */
   dirs?:
     | string
     | {
         cjs: string
         esm: string
       }
+  /**
+   * Config cjs format and esm format ext
+   * @default { cjs: 'cjs', esm: 'mjs' }
+   */
   exts?:
     | string
     | {
         cjs: string
         esm: string
       }
+  /**
+   * Enable types define, will setup `typesVersions` and `exports.types`
+   */
   types?:
     | boolean
     | {
@@ -121,5 +140,8 @@ export const exportsTemplate = ({
       }
     }
   })
+  if (isEmpty(pkg.typesVersions!['*'])) {
+    delete pkg.typesVersions
+  }
   return pkg
 }

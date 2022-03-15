@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`exports template > demo part > basic 1`] = `
+exports[`exports template > basic > basic 1`] = `
 {
   "exports": {
     ".": {
@@ -33,5 +33,41 @@ exports[`exports template > demo part > basic 1`] = `
       ],
     },
   },
+}
+`;
+
+exports[`exports template > non index file, main/module/types filed will be empty > non index 1`] = `
+{
+  "exports": {
+    "./package.json": "./package.json",
+    "./ua": {
+      "import": "./dist/ua.mjs",
+      "require": "./dist/ua.cjs",
+      "types": "./dist/ua.d.ts",
+    },
+  },
+  "typesVersions": {
+    "*": {
+      "ua": [
+        "dist/ua.d.ts",
+      ],
+    },
+  },
+}
+`;
+
+exports[`exports template > only index file > index only 1`] = `
+{
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts",
+    },
+    "./package.json": "./package.json",
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
 }
 `;
