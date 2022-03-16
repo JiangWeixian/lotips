@@ -1,7 +1,6 @@
-// lang
-export { isMobile } from './is-mobile'
-export { isiOS } from './is-ios'
-export { isAndroid } from './is-android'
+export { isMobile, isiOS, isAndroid } from './ua'
 
-// string
 export { doHighlight } from './do-highlight'
+export { doSearch } from './do-search'
+
+export { exportsTemplate } from './exports-template'

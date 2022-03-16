@@ -1,15 +1,36 @@
 # @lotips/core
+*utility for vanilla js*
 
-- [@lotips/core](#lotipscore)
-  - [lang](#lang)
-  - [string](#string)
+### `do-highlight`
 
-## lang
+replace `highlight` -> `<mark>highlight</mark>` with with vanilla js.
 
-- [isMobile]() - `fork from`[is-mobile]()
-- [isAndroid]()
-- [isiOS]()
+```ts
+doHighlight('hello world', 'world')
 
-## string
+// hello <mark>world</mark>
+```
 
-- [doHighlight](/src/do-hightlight.ts) - highlight string
+### `do-search`
+
+search website content with keyword, and highlight it.
+
+```ts
+doSearch('world')
+```
+
+### `exports-template`
+
+generate package's exports field.
+
+```ts
+const exports = exportsTemplate({
+  names: ['index', 'ua', 'do-something/index']
+})
+```
+
+### ua
+
+- `is-mobile`
+- `is-iOS`
+- `is-android`

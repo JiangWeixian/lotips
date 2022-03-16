@@ -1,11 +1,9 @@
 /**
- * NOTE:
- * if webcontent come from can be use with markdown render, and __html
- * use for hightlight keyword by replacing with a html tag
- * Refs:
- * - https://www.eriwen.com/javascript/highlight-search-results-with-js/
+ * @description replace `highlight` -> `<mark>highlight</mark>` with with vanilla js.
+ * @see: {@link https://www.eriwen.com/javascript/highlight-search-results-with-js/}
+ * @category string
+ * @example doHighlight('hello world', 'world')
  */
-
 export const doHighlight = (
   original: string,
   highlight: string,

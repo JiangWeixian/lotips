@@ -1,14 +1,11 @@
 /**
- * WHY:
- * a simple way to highlight content on website
- * WARNING:
- * now it's not working on textarea
+ * @description a simple way to highlight content on website
+ * @waring now it's not working on textarea
+ * @category dom
  */
-
-// tslint:disable:no-any
 export function doSearch(
   text: string,
-  { aCaseSensitive = false }: { aCaseSensitive: boolean } = { aCaseSensitive: false },
+  { caseSensitive = false }: { caseSensitive: boolean } = { caseSensitive: false },
 ) {
   const W = window as any
   const B = document.body as any
@@ -18,7 +15,7 @@ export function doSearch(
     sel?.collapse(document.body, 0)
 
     // tslint:disable-next-line:no-any
-    while (W.find(text, aCaseSensitive)) {
+    while (W.find(text, caseSensitive)) {
       document.execCommand('HiliteColor', false, 'yellow')
       sel?.collapseToEnd()
     }
