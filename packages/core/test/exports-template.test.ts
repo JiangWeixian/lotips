@@ -23,4 +23,33 @@ describe('exports template', () => {
     })
     expect(exports).toMatchSnapshot('non index')
   })
+
+  it('cjs only, exports.import & module is empty', () => {
+    const exports = exportsTemplate({
+      names: ['ua', 'index'],
+      formats: ['cjs'],
+      dirs: {
+        cjs: 'dist',
+        es: 'dist',
+      // as any for test, if dirs keys not match cjs
+      } as any
+    })
+    expect(exports).toMatchSnapshot('cjs only')
+  })
+})
+
+describe('fixtures', () => {
+  it('fix #44, only allowed es not esm format', () => {
+    const exports = exportsTemplate({
+      names: ['ua', 'index'],
+      formats: ['es', 'cjs'],
+      dirs: {
+        esm: 'mjs',
+        cjs: 'dist',
+        es: 'dist',
+      // as any for test, if dirs keys not match cjs
+      } as any
+    })
+    expect(exports).toMatchSnapshot('only allow es')
+  })
 })

@@ -8,9 +8,9 @@ export type ExportsTemplateParams = {
   names: string[]
   /**
    * Exported formats, impact `exports.require` or `exports.import`
-   * @default ['cjs', 'esm']
+   * @default ['cjs', 'es']
    */
-  formats?: Array<'cjs' | 'esm' | 'es'>
+  formats?: Array<'cjs' | 'es'>
   /**
    * Bundled files dir
    * @default dist
@@ -19,17 +19,17 @@ export type ExportsTemplateParams = {
     | string
     | {
         cjs: string
-        esm: string
+        es: string
       }
   /**
-   * Config cjs format and esm format ext
-   * @default { cjs: 'cjs', esm: 'mjs' }
+   * Config cjs format and es format ext
+   * @default { cjs: 'cjs', es: 'mjs' }
    */
   exts?:
     | string
     | {
         cjs: string
-        esm: string
+        es: string
       }
   /**
    * Enable types define, will setup `typesVersions` and `exports.types`
@@ -58,35 +58,28 @@ type PartPkg = {
  */
 export const exportsTemplate = ({
   names,
-  formats = ['cjs', 'esm'],
+  formats = ['cjs', 'es'],
   dirs = 'dist',
   types = true,
-  exts = { cjs: 'cjs', esm: 'mjs' },
+  exts = { cjs: 'cjs', es: 'mjs' },
 }: ExportsTemplateParams) => {
   const pkg: PartPkg = {
     exports: {},
   }
   // resolve options
-  const _formats = uniq(
-    formats.map(format => {
-      if (format === 'es') {
-        return 'esm'
-      }
-      return format
-    }),
-  )
+  const _formats = uniq(formats)
   const _dirs =
     typeof dirs === 'string'
       ? {
           cjs: dirs,
-          esm: dirs,
+          es: dirs,
         }
       : dirs
   const _exts =
     typeof exts === 'string'
       ? {
           cjs: exts,
-          esm: exts,
+          es: exts,
         }
       : exts
   const _types =
@@ -107,8 +100,8 @@ export const exportsTemplate = ({
       if (format === 'cjs') {
         results.require = `./${_dirs.cjs}/${name}.${_exts.cjs}`
       }
-      if (format === 'cjs') {
-        results.import = `./${_dirs.esm}/${name}.${_exts.esm}`
+      if (format === 'es') {
+        results.import = `./${_dirs.es}/${name}.${_exts.es}`
       }
       if (_types) {
         results.types = `./${_types.dir}/${name}.d.ts`
@@ -126,7 +119,7 @@ export const exportsTemplate = ({
     if (name === 'index') {
       pkg.exports['.'] = subExport('index')
       pkg.main = pkg.exports['.'].require.slice(2)
-      pkg.module = pkg.exports['.'].import.slice(2)
+      pkg.module = formats.includes('es') ? pkg.exports['.'].import.slice(2) : undefined
       if (types) {
         pkg.types = pkg.exports['.'].types.slice(2)
       }

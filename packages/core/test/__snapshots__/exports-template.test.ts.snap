@@ -36,6 +36,32 @@ exports[`exports template > basic > basic 1`] = `
 }
 `;
 
+exports[`exports template > cjs only, exports.import & module is empty > cjs only 1`] = `
+{
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts",
+    },
+    "./package.json": "./package.json",
+    "./ua": {
+      "require": "./dist/ua.cjs",
+      "types": "./dist/ua.d.ts",
+    },
+  },
+  "main": "dist/index.cjs",
+  "module": undefined,
+  "types": "dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "ua": [
+        "dist/ua.d.ts",
+      ],
+    },
+  },
+}
+`;
+
 exports[`exports template > non index file, main/module/types filed will be empty > non index 1`] = `
 {
   "exports": {
@@ -69,5 +95,33 @@ exports[`exports template > only index file > index only 1`] = `
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+}
+`;
+
+exports[`fixtures > fix #44, only allowed es not esm format > only allow es 1`] = `
+{
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts",
+    },
+    "./package.json": "./package.json",
+    "./ua": {
+      "import": "./dist/ua.mjs",
+      "require": "./dist/ua.cjs",
+      "types": "./dist/ua.d.ts",
+    },
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "ua": [
+        "dist/ua.d.ts",
+      ],
+    },
+  },
 }
 `;

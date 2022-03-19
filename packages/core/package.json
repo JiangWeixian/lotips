@@ -77,7 +77,8 @@
     "build": "rimraf dist && rollup -c",
     "dev": "rollup -c -w",
     "pretest": "pnpm run build",
-    "test": "pnpm run pretest && vitest"
+    "vitest": "vitest",
+    "test": "pnpm run pretest && pnpm run vitest"
   },
   "dependencies": {
     "is-mobile": "^3.1.0"
