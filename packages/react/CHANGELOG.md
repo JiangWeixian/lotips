@@ -1,5 +1,14 @@
 # @lotips/react
 
+## 0.8.6
+
+### Patch Changes
+
+- 1d8eea5: upgrade lotips/core in react
+- Updated dependencies [63633a7]
+- Updated dependencies [1d8eea5]
+  - @lotips/core@0.9.1
+
 ## 0.8.5
 
 ### Patch Changes
