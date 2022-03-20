@@ -1,9 +1,5 @@
-/**
- * refs: https://usehooks.com/useOnClickOutside/
- */
-
 import { useEffect } from 'react'
-import { isMobile } from '@lotips/core'
+import { isMobile } from '@lotips/core/ua'
 
 const EMPTY_ELEMENTS: Element[] = []
 
@@ -14,12 +10,29 @@ export type UseClickOutsideProps = {
   insides?: any[]
 }
 
+/**
+ * @description click outside of element hook
+ * @see {@link https://usehooks.com/useOnClickOutside/}
+ */
 export function useClickOutside(
   ref: React.MutableRefObject<HTMLElement | null | undefined>,
   {
+    /**
+     * Specific extra outside elements
+     */
     outsides = EMPTY_ELEMENTS,
+    /**
+     * Specific extra inside elements
+     * @default ref
+     */
     insides = EMPTY_ELEMENTS,
+    /**
+     * Callback if click inside
+     */
     onClickInside,
+    /**
+     * Callback if click outside
+     */
     onClickOutside,
   }: UseClickOutsideProps,
 ) {

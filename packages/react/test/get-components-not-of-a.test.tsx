@@ -1,5 +1,6 @@
 import React from 'react'
 import { getComponentsNotOfA } from '../src/get-components-not-of-a'
+import { describe, expect, it } from 'vitest'
 
 const ComponentA = () => {
   return <a href="#">componenta</a>
@@ -10,7 +11,7 @@ const ComponentB = () => {
 }
 
 describe('get-component-not-of-a', () => {
-  test('should return component a length', () => {
+  it('should return component a length', () => {
     const alla = getComponentsNotOfA([<ComponentA />, <ComponentA />], ComponentA)
     expect(alla.length).toBe(0)
     const aandb = getComponentsNotOfA([<ComponentA />, <ComponentB />], ComponentA)

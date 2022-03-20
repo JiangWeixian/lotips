@@ -1,5 +1,6 @@
 import React from 'react'
 import { getComponentsOfA } from '../src/get-components-of-a'
+import { describe, expect, it } from 'vitest'
 
 const ComponentA = () => {
   return <a href="#">componenta</a>
@@ -10,7 +11,7 @@ const ComponentB = () => {
 }
 
 describe('get-component-of-a', () => {
-  test('should return component a length', () => {
+  it('should return component a length', () => {
     const alla = getComponentsOfA([<ComponentA />, <ComponentA />], ComponentA)
     expect(alla.length).toBe(2)
     const aandb = getComponentsOfA([<ComponentA />, <ComponentB />], ComponentA)

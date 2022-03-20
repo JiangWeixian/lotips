@@ -1,15 +1,17 @@
 import { renderHook, act } from '@testing-library/react-hooks'
+import { describe, expect, it } from 'vitest'
+
 import { useDebounce } from '../src/use-debounce'
 import { delay } from '../utils/delay'
 
 describe('use-debounce', () => {
-  test('default value should work', () => {
+  it('default value should work', () => {
     const { result } = renderHook(() => useDebounce({ defaultValue: 1 }))
     expect(result.current.value).toBe(1)
     expect(result.current.debouncedValue).toBe(1)
   })
 
-  test('value should be react, debounced value should be debounced', async() => {
+  it('value should be react, debounced value should be debounced', async() => {
     const { result, waitForNextUpdate } = renderHook(() => useDebounce({ interval: 2000 }))
     act(() => {
       Array(10)

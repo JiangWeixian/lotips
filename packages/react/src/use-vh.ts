@@ -1,12 +1,10 @@
-/**
- * WHY:
- * refs: https://stackoverflow.com/questions/37112218/css3-100vh-not-constant-in-mobile-browser
- * NOTE:
- * if window resize, should exec setRealHeight again
- */
-
 import { useEffect, useCallback } from 'react'
 
+/**
+ * @description get real vh on mobile device
+ * @see {@link https://stackoverflow.com/questions/37112218/css3-100vh-not-constant-in-mobile-browser}
+ * @warning if window resize, should exec setRealHeight again
+ */
 export const useVH = () => {
   const setRealHeight = useCallback(() => {
     const h = window.innerHeight

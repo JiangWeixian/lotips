@@ -1,12 +1,9 @@
-/**
- * WHY:
- * 有的时候我们会选择监听剪贴板行为，甚至是跨域`Tab`的监听行为。所以用了轮询的方式
- * 或许会有延迟，但是的确是`Observer`的表现
- * WARNING:
- * 在`IOS`移动端上, 可能不支持`navigator.clipboard`
- */
 import { useState, useRef, useEffect } from 'react'
 
+/**
+ * @description listen clipboard text
+ * @warning maybe not working on iOS
+ */
 export const useClipboardObserver = ({ interval = 1000 }) => {
   const [text, setText] = useState<string>()
   const intervaler = useRef<NodeJS.Timer>()

@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react'
 
+/**
+ * @description is window resizing
+ */
 export const useWindowResize = () => {
   const [resizeing, setResizing] = useState(false)
   useEffect(() => {

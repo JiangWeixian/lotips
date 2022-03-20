@@ -1,13 +1,10 @@
-/**
- * WHY:
- * get all component a from react.children
- * WARNING:
- * - `<><componenta /></>`和`<componenta />`不相同
- */
-
 import React from 'react'
 import { hasComponentOfA } from './has-component-of-a'
 
+/**
+ * @description get all component a from react.children
+ * @warning `<><componenta /></>`和`<componenta />` is different
+ */
 export const getComponentsNotOfA = (
   children: React.ReactNode,
   target: React.ComponentType<any>,
