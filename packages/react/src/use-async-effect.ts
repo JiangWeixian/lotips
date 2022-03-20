@@ -1,5 +1,8 @@
 import { useEffect } from 'react'
 
+/**
+ * @deprecated async exec useEffect
+ */
 export const useAsyncEffect = (
   callback: () => Promise<Function | undefined | void>,
   deps?: any[],

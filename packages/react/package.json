@@ -1,57 +1,153 @@
 {
   "name": "@lotips/react",
   "version": "0.8.5",
-  "main": "lib/lotips-react.cjs.js",
-  "module": "lib/lotips-react.esm.js",
-  "typings": "lib/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    "./get-components-not-of-a": {
+      "require": "./dist/get-components-not-of-a.cjs",
+      "import": "./dist/get-components-not-of-a.mjs",
+      "types": "./dist/get-components-not-of-a.d.ts"
+    },
+    "./get-components-of-a": {
+      "require": "./dist/get-components-of-a.cjs",
+      "import": "./dist/get-components-of-a.mjs",
+      "types": "./dist/get-components-of-a.d.ts"
+    },
+    "./has-component-of-a": {
+      "require": "./dist/has-component-of-a.cjs",
+      "import": "./dist/has-component-of-a.mjs",
+      "types": "./dist/has-component-of-a.d.ts"
+    },
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./use-async-effect": {
+      "require": "./dist/use-async-effect.cjs",
+      "import": "./dist/use-async-effect.mjs",
+      "types": "./dist/use-async-effect.d.ts"
+    },
+    "./use-async-state": {
+      "require": "./dist/use-async-state.cjs",
+      "import": "./dist/use-async-state.mjs",
+      "types": "./dist/use-async-state.d.ts"
+    },
+    "./use-batch": {
+      "require": "./dist/use-batch.cjs",
+      "import": "./dist/use-batch.mjs",
+      "types": "./dist/use-batch.d.ts"
+    },
+    "./use-clickboard-observer": {
+      "require": "./dist/use-clickboard-observer.cjs",
+      "import": "./dist/use-clickboard-observer.mjs",
+      "types": "./dist/use-clickboard-observer.d.ts"
+    },
+    "./use-clickoutside": {
+      "require": "./dist/use-clickoutside.cjs",
+      "import": "./dist/use-clickoutside.mjs",
+      "types": "./dist/use-clickoutside.d.ts"
+    },
+    "./use-debounce": {
+      "require": "./dist/use-debounce.cjs",
+      "import": "./dist/use-debounce.mjs",
+      "types": "./dist/use-debounce.d.ts"
+    },
+    "./use-mount": {
+      "require": "./dist/use-mount.cjs",
+      "import": "./dist/use-mount.mjs",
+      "types": "./dist/use-mount.d.ts"
+    },
+    "./use-vh": {
+      "require": "./dist/use-vh.cjs",
+      "import": "./dist/use-vh.mjs",
+      "types": "./dist/use-vh.d.ts"
+    },
+    "./use-window-resize": {
+      "require": "./dist/use-window-resize.cjs",
+      "import": "./dist/use-window-resize.mjs",
+      "types": "./dist/use-window-resize.d.ts"
+    }
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "files": [
-    "lib"
+    "dist"
   ],
   "scripts": {
     "build": "rimraf lib && rollup -c",
     "dev": "rollup -c -w",
-    "test": "jest",
-    "pretest": "pnpm run build",
-    "update": "pnpm update && pnpm update --save-dev",
-    "check": "pnpm outdated && pnpm outdated --save-dev"
+    "test": "vitest"
   },
   "peerDependencies": {
     "react": "latest"
   },
   "dependencies": {
-    "@lotips/core": "^0.9.0",
-    "lodash.debounce": "4.0.8",
-    "lodash.keyby": "4.6.0",
-    "lodash.uniqby": "4.7.0",
-    "lodash.xor": "4.5.0",
-    "use-rematch-reducer": "1.1.0"
+    "@lotips/core": "workspace:^0.9.0"
   },
   "devDependencies": {
-    "@testing-library/react-hooks": "3.2.1",
-    "@types/lodash.debounce": "4.0.6",
-    "@types/lodash.keyby": "4.6.6",
-    "@types/lodash.uniqby": "4.7.6",
-    "@types/lodash.xor": "4.5.6",
-    "enzyme": "3.11.0",
-    "enzyme-adapter-react-16": "1.15.2",
-    "jest": "24.9.0",
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "@testing-library/react-hooks": "7.0.2",
+    "lodash-es": "^4.17.21",
     "react": "^17.0.2",
-    "react-dom": "16.13.1",
+    "react-dom": "17.0.2",
     "react-hooks-testing-library": "0.6.0",
-    "react-test-renderer": "16.13.0",
-    "rimraf": "3.0.0",
-    "rollup": "1.12.2",
-    "rollup-plugin-alias": "2.0.0",
-    "rollup-plugin-commonjs": "10.0.0",
-    "rollup-plugin-node-resolve": "5.0.0",
-    "rollup-plugin-typescript2": "0.24.0",
-    "ts-jest": "24.0.2",
-    "ts-node": "8.1.0",
-    "tslib": "1.9.3",
-    "typescript": "3.7.2"
+    "react-test-renderer": "17.0.2",
+    "rimraf": "3.0.2",
+    "rollup": "2.70.1",
+    "rollup-plugin-alias": "2.2.0",
+    "rollup-plugin-commonjs": "10.1.0",
+    "rollup-plugin-condition-exports": "^1.3.0",
+    "rollup-plugin-multi-input": "^1.3.1",
+    "rollup-plugin-node-externals": "^4.0.0",
+    "rollup-plugin-node-resolve": "5.2.0",
+    "rollup-plugin-typescript2": "0.31.2",
+    "tslib": "2.3.1",
+    "typescript": "4.6.2",
+    "vitest": "^0.7.6"
   },
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "22654d385c8bcb05027ae43a08fb6cad6736836c"
+  "typesVersions": {
+    "*": {
+      "get-components-not-of-a": [
+        "dist/get-components-not-of-a.d.ts"
+      ],
+      "get-components-of-a": [
+        "dist/get-components-of-a.d.ts"
+      ],
+      "has-component-of-a": [
+        "dist/has-component-of-a.d.ts"
+      ],
+      "use-async-effect": [
+        "dist/use-async-effect.d.ts"
+      ],
+      "use-async-state": [
+        "dist/use-async-state.d.ts"
+      ],
+      "use-batch": [
+        "dist/use-batch.d.ts"
+      ],
+      "use-clickboard-observer": [
+        "dist/use-clickboard-observer.d.ts"
+      ],
+      "use-clickoutside": [
+        "dist/use-clickoutside.d.ts"
+      ],
+      "use-debounce": [
+        "dist/use-debounce.d.ts"
+      ],
+      "use-mount": [
+        "dist/use-mount.d.ts"
+      ],
+      "use-vh": [
+        "dist/use-vh.d.ts"
+      ],
+      "use-window-resize": [
+        "dist/use-window-resize.d.ts"
+      ]
+    }
+  }
 }

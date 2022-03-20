@@ -2,11 +2,12 @@ import React, { useState, useContext } from 'react'
 import { renderHook, act } from '@testing-library/react-hooks'
 import { useAsyncEffect } from '../src/use-async-effect'
 import { delay } from '../utils/delay'
+import { describe, expect, it } from 'vitest'
 
 const AsyncEffectContext = React.createContext(1)
 
 describe('use-async-effect', () => {
-  test('work with async function', async() => {
+  it('work with async function', async() => {
     const _useAsyncEffect = () => {
       const value = useContext(AsyncEffectContext)
       return {
@@ -26,7 +27,7 @@ describe('use-async-effect', () => {
     expect(hook.result.current.value).toBe(2)
   })
 
-  test('clear function shoud work fine', async() => {
+  it('clear function shoud work fine', async() => {
     let reseted = 0
     const _useAsyncEffect = () => {
       const [value, setValue] = useState()
