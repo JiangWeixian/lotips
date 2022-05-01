@@ -1,7 +1,7 @@
 import uniq from 'lodash-es/uniq'
 import isEmpty from 'lodash-es/isEmpty'
 
-const FIELDS = ['main', 'module', 'typesVersion', 'exports', 'types'] as const
+const FIELDS = ['main', 'module', 'typesVersions', 'exports', 'types'] as const
 
 export type ExportsTemplateParams = {
   /**
