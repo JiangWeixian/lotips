@@ -1,6 +1,8 @@
 import uniq from 'lodash-es/uniq'
 import isEmpty from 'lodash-es/isEmpty'
 
+const FIELDS = ['main', 'module', 'typesVersion', 'exports', 'types'] as const
+
 export type ExportsTemplateParams = {
   /**
    * Exported module names
@@ -32,13 +34,19 @@ export type ExportsTemplateParams = {
         es: string
       }
   /**
-   * Enable types define, will setup `typesVersions` and `exports.types`
+   * Config `typesVersions`, `exports.types` and `types`
+   * Specific types dir
+   * @example false, will disable `typesVersions`, `exports.types` and `types`
    */
   types?:
     | boolean
     | {
         dir: string
       }
+  /**
+   * Force disable partial fields, regardless of other settings
+   */
+  disabledFields?: typeof FIELDS[number][]
 }
 
 type PartPkg = {
@@ -62,6 +70,7 @@ export const exportsTemplate = ({
   dirs = 'dist',
   types = true,
   exts = { cjs: 'cjs', es: 'mjs' },
+  disabledFields = [],
 }: ExportsTemplateParams) => {
   const pkg: PartPkg = {
     exports: {},
@@ -135,6 +144,10 @@ export const exportsTemplate = ({
   })
   if (isEmpty(pkg.typesVersions!['*'])) {
     delete pkg.typesVersions
+  }
+  // force disable field
+  for (const field of disabledFields) {
+    delete pkg[field]
   }
   return pkg
 }
