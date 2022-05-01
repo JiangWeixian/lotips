@@ -1,5 +1,11 @@
 # @lotips/core
 
+## 0.9.2
+
+### Patch Changes
+
+- 3056ba5: support disable fields
+
 ## 0.9.1
 
 ### Patch Changes
