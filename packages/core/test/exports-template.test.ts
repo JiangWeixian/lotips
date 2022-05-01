@@ -38,6 +38,24 @@ describe('exports template', () => {
   })
 })
 
+describe('feat: disable fields', () => {
+  it('empty disable fields should not del fields', () => {
+    const exports = exportsTemplate({
+      names: ['index', 'ua', 'do-something/index'],
+      disabledFields: []
+    })
+    expect(exports.types).toBeDefined()
+  })
+
+  it('disable fields should work', () => {
+    const exports = exportsTemplate({
+      names: ['index', 'ua', 'do-something/index'],
+      disabledFields: ['types']
+    })
+    expect(exports.types).toBeUndefined()
+  })
+})
+
 describe('fixtures', () => {
   it('fix #44, only allowed es not esm format', () => {
     const exports = exportsTemplate({
