@@ -96,7 +96,7 @@ export const exportsTemplate = ({
       ? {
           dir: _dirs.cjs,
         }
-      : undefined
+      : types
   pkg.exports['./package.json'] = './package.json'
   if (types) {
     pkg.typesVersions = {
@@ -129,7 +129,7 @@ export const exportsTemplate = ({
       pkg.exports['.'] = subExport('index')
       pkg.main = pkg.exports['.'].require.slice(2)
       pkg.module = formats.includes('es') ? pkg.exports['.'].import.slice(2) : undefined
-      if (types) {
+      if (_types) {
         pkg.types = pkg.exports['.'].types.slice(2)
       }
     } else {

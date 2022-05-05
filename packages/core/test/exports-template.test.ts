@@ -56,6 +56,25 @@ describe('feat: disable fields', () => {
   })
 })
 
+describe('feat: config types', () => {
+  it('default dts dir is dist', () => {
+    const exports = exportsTemplate({
+      names: ['index', 'ua'],
+    })
+    expect(exports.types).toBe('dist/index.d.ts')
+  })
+
+  it('config types dir should work', () => {
+    const exports = exportsTemplate({
+      names: ['index', 'ua'],
+      types: {
+        dir: 'dts'
+      }
+    })
+    expect(exports.types).toBe('dts/index.d.ts')
+  })
+})
+
 describe('fixtures', () => {
   it('fix #44, only allowed es not esm format', () => {
     const exports = exportsTemplate({
