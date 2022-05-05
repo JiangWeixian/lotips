@@ -1,5 +1,11 @@
 # @lotips/core
 
+## 0.9.3
+
+### Patch Changes
+
+- ea05f60: fix types dir config not working
+
 ## 0.9.2
 
 ### Patch Changes
