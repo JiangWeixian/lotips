@@ -81,7 +81,7 @@
     "test": "vitest"
   },
   "peerDependencies": {
-    "react": "latest"
+    "react": "*"
   },
   "dependencies": {
     "@lotips/core": "workspace:^0.9.1"
