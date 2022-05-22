@@ -37,6 +37,7 @@ importers:
       lodash-es: ^4.17.21
       rimraf: 3.0.2
       rollup: 2.70.1
+      rollup-plugin-condition-exports: ^1.4.1
       rollup-plugin-node-externals: ^4.0.0
       rollup-plugin-typescript2: ^0.31.2
       tslib: 2.3.1
@@ -52,8 +53,9 @@ importers:
       lodash-es: 4.17.21
       rimraf: 3.0.2
       rollup: 2.70.1
+      rollup-plugin-condition-exports: 1.4.1
       rollup-plugin-node-externals: 4.0.0_rollup@2.70.1
-      rollup-plugin-typescript2: 0.31.2_rollup@2.70.1+typescript@4.6.2
+      rollup-plugin-typescript2: 0.31.2_dcfdf920a076fb753d9a74e8fedece5c
       tslib: 2.3.1
       typescript: 4.6.2
       vitest: 0.7.6
@@ -2220,6 +2222,15 @@ packages:
     bundledDependencies:
       - lodash-es
 
+  /@lotips/core/0.9.3:
+    resolution: {integrity: sha512-KBt9Q4ZUi5/8DdvKjy1NIc8igaioaAgi37bMUoKU2mm0RUiZJBi6dLZKfVpAmU+2o8zhAXhubcf+YiNUMliXew==}
+    engines: {node: '>=14'}
+    dependencies:
+      is-mobile: 3.1.1
+    dev: true
+    bundledDependencies:
+      - lodash-es
+
   /@manypkg/find-root/1.1.0:
     resolution: {integrity: sha512-mki5uBvhHzO8kYYix/WRy2WX8S3B5wdVSc9D6KcU5lQNglP2yt58/VfLuAK49glRXChosY8ap2oJ1qgma3GUVA==}
     dependencies:
@@ -3260,6 +3271,16 @@ packages:
       pkg-dir: 5.0.0
       tslib: 2.3.1
       upath2: 3.1.12
+    transitivePeerDependencies:
+      - '@types/node'
+    dev: true
+
+  /@yarn-tool/resolve-package/1.0.46_@types+node@17.0.30:
+    resolution: {integrity: sha512-RJcBGTVywUqYGRtGkPSgJC/ozf0wK/xjUy66tXkbpL35U0o1oef4S0v23euxA/CiukqBWr2fRGtGY6FidESdTg==}
+    dependencies:
+      pkg-dir: 5.0.0
+      tslib: 2.3.1
+      upath2: 3.1.12_@types+node@17.0.30
     transitivePeerDependencies:
       - '@types/node'
     dev: true
@@ -12047,6 +12068,18 @@ packages:
       - supports-color
     dev: true
 
+  /rollup-plugin-condition-exports/1.4.1:
+    resolution: {integrity: sha512-MjBbMdr6a8/zb5ZX+wrtljzIktb88yA5x2ffEh/BI1w7KcmYh3izHiFp6ZwQ46jd/lz1bSfuRIVvhhh25muT6A==}
+    dependencies:
+      '@lotips/core': 0.9.3
+      '@rollup/pluginutils': 4.2.0
+      debug: 4.3.4
+      fast-glob: 3.2.11
+      fs-extra: 10.0.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /rollup-plugin-exclude-dependencies-from-bundle/1.1.20_rollup@2.52.8:
     resolution: {integrity: sha512-0uh41SrDNO+aU3Kgau1DnDbNgTNHtzpR1boS0wnmMp63JiEwVqA2CBVmfIKV9lotdYRnJ+F4/buYDoPWu9ViZQ==}
     peerDependencies:
@@ -12143,6 +12176,24 @@ packages:
       rollup: 2.52.8
       tslib: 2.1.0
       typescript: 4.3.5
+    dev: true
+
+  /rollup-plugin-typescript2/0.31.2_dcfdf920a076fb753d9a74e8fedece5c:
+    resolution: {integrity: sha512-hRwEYR1C8xDGVVMFJQdEVnNAeWRvpaY97g5mp3IeLnzhNXzSVq78Ye/BJ9PAaUfN4DXa/uDnqerifMOaMFY54Q==}
+    peerDependencies:
+      rollup: '>=1.26.3'
+      typescript: '>=2.4.0'
+    dependencies:
+      '@rollup/pluginutils': 4.2.0
+      '@yarn-tool/resolve-package': 1.0.46_@types+node@17.0.30
+      find-cache-dir: 3.3.2
+      fs-extra: 10.0.1
+      resolve: 1.22.0
+      rollup: 2.70.1
+      tslib: 2.3.1
+      typescript: 4.6.2
+    transitivePeerDependencies:
+      - '@types/node'
     dev: true
 
   /rollup-plugin-typescript2/0.31.2_rollup@2.70.1+typescript@4.6.2:
@@ -13680,6 +13731,17 @@ packages:
     peerDependencies:
       '@types/node': '*'
     dependencies:
+      path-is-network-drive: 1.0.13
+      path-strip-sep: 1.0.10
+      tslib: 2.3.1
+    dev: true
+
+  /upath2/3.1.12_@types+node@17.0.30:
+    resolution: {integrity: sha512-yC3eZeCyCXFWjy7Nu4pgjLhXNYjuzuUmJiRgSSw6TJp8Emc+E4951HGPJf+bldFC5SL7oBLeNbtm1fGzXn2gxw==}
+    peerDependencies:
+      '@types/node': '*'
+    dependencies:
+      '@types/node': 17.0.30
       path-is-network-drive: 1.0.13
       path-strip-sep: 1.0.10
       tslib: 2.3.1

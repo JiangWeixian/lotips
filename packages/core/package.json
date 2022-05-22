@@ -27,28 +27,28 @@
     "./package.json": "./package.json",
     ".": {
       "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs"
     },
     "./ua": {
       "require": "./dist/ua.cjs",
-      "import": "./dist/ua.mjs",
-      "types": "./dist/ua.d.ts"
-    },
-    "./exports-template": {
-      "require": "./dist/exports-template.cjs",
-      "import": "./dist/exports-template.mjs",
-      "types": "./dist/exports-template.d.ts"
+      "types": "./dist/ua.d.ts",
+      "import": "./dist/ua.mjs"
     },
     "./do-highlight": {
       "require": "./dist/do-highlight.cjs",
-      "import": "./dist/do-highlight.mjs",
-      "types": "./dist/do-highlight.d.ts"
+      "types": "./dist/do-highlight.d.ts",
+      "import": "./dist/do-highlight.mjs"
     },
     "./do-search": {
       "require": "./dist/do-search.cjs",
-      "import": "./dist/do-search.mjs",
-      "types": "./dist/do-search.d.ts"
+      "types": "./dist/do-search.d.ts",
+      "import": "./dist/do-search.mjs"
+    },
+    "./exports-template": {
+      "require": "./dist/exports-template.cjs",
+      "types": "./dist/exports-template.d.ts",
+      "import": "./dist/exports-template.mjs"
     }
   },
   "main": "dist/index.cjs",
@@ -62,14 +62,14 @@
       "ua": [
         "dist/ua.d.ts"
       ],
-      "exports-template": [
-        "dist/exports-template.d.ts"
-      ],
       "do-highlight": [
         "dist/do-highlight.d.ts"
       ],
       "do-search": [
         "dist/do-search.d.ts"
+      ],
+      "exports-template": [
+        "dist/exports-template.d.ts"
       ]
     }
   },
@@ -94,6 +94,7 @@
     "lodash-es": "^4.17.21",
     "rimraf": "3.0.2",
     "rollup": "2.70.1",
+    "rollup-plugin-condition-exports": "^1.4.1",
     "rollup-plugin-node-externals": "^4.0.0",
     "rollup-plugin-typescript2": "^0.31.2",
     "tslib": "2.3.1",
