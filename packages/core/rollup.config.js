@@ -4,6 +4,7 @@ import alias from '@rollup/plugin-alias'
 import externals from 'rollup-plugin-node-externals'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import ce from 'rollup-plugin-condition-exports'
+import multi from 'rollup-plugin-multi-input'
 import { defineConfig } from 'rollup'
 
 export default defineConfig([
@@ -14,8 +15,9 @@ export default defineConfig([
   // an array for the `output` option, where we can specify
   // `file` and `format` for each target)
   {
-    input: ['src/index.ts', 'src/do-highlight.ts', 'src/do-search.ts', 'src/ua.ts', 'src/exports-template.ts'],
+    input: ['src/**.ts'],
     plugins: [
+      multi(),
       typescript({
         tsconfigOverride: {
           exclude: ["test"]
