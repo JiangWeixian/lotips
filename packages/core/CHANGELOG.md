@@ -1,5 +1,15 @@
 # @lotips/core
 
+## 0.10.0
+
+### Minor Changes
+
+- bde26ba: random direction value
+
+### Patch Changes
+
+- 73b19e0: remove lodash-es from bundledependencies
+
 ## 0.9.3
 
 ### Patch Changes

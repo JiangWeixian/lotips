@@ -1,6 +1,6 @@
 {
   "name": "@lotips/react",
-  "version": "0.8.6",
+  "version": "0.8.7",
   "exports": {
     "./package.json": "./package.json",
     "./get-components-not-of-a": {
@@ -84,7 +84,7 @@
     "react": "latest"
   },
   "dependencies": {
-    "@lotips/core": "workspace:^0.9.1"
+    "@lotips/core": "workspace:^0.10.0"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.1.3",

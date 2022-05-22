@@ -1,5 +1,13 @@
 # @lotips/react
 
+## 0.8.7
+
+### Patch Changes
+
+- Updated dependencies [73b19e0]
+- Updated dependencies [bde26ba]
+  - @lotips/core@0.10.0
+
 ## 0.8.6
 
 ### Patch Changes
