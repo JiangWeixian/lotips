@@ -83,9 +83,6 @@
   "dependencies": {
     "is-mobile": "^3.1.1"
   },
-  "bundledDependencies": [
-    "lodash-es"
-  ],
   "devDependencies": {
     "@rollup/plugin-alias": "^3.1.9",
     "@rollup/plugin-commonjs": "^21.0.2",
