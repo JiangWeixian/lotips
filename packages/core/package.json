@@ -25,16 +25,6 @@
   },
   "exports": {
     "./package.json": "./package.json",
-    ".": {
-      "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs"
-    },
-    "./ua": {
-      "require": "./dist/ua.cjs",
-      "types": "./dist/ua.d.ts",
-      "import": "./dist/ua.mjs"
-    },
     "./do-highlight": {
       "require": "./dist/do-highlight.cjs",
       "types": "./dist/do-highlight.d.ts",
@@ -49,6 +39,21 @@
       "require": "./dist/exports-template.cjs",
       "types": "./dist/exports-template.d.ts",
       "import": "./dist/exports-template.mjs"
+    },
+    ".": {
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs"
+    },
+    "./ua": {
+      "require": "./dist/ua.cjs",
+      "types": "./dist/ua.d.ts",
+      "import": "./dist/ua.mjs"
+    },
+    "./random": {
+      "require": "./dist/random.cjs",
+      "types": "./dist/random.d.ts",
+      "import": "./dist/random.mjs"
     }
   },
   "main": "dist/index.cjs",
@@ -59,9 +64,6 @@
   ],
   "typesVersions": {
     "*": {
-      "ua": [
-        "dist/ua.d.ts"
-      ],
       "do-highlight": [
         "dist/do-highlight.d.ts"
       ],
@@ -70,6 +72,12 @@
       ],
       "exports-template": [
         "dist/exports-template.d.ts"
+      ],
+      "ua": [
+        "dist/ua.d.ts"
+      ],
+      "random": [
+        "dist/random.d.ts"
       ]
     }
   },
@@ -92,6 +100,7 @@
     "rimraf": "3.0.2",
     "rollup": "2.70.1",
     "rollup-plugin-condition-exports": "^1.4.1",
+    "rollup-plugin-multi-input": "^1.3.1",
     "rollup-plugin-node-externals": "^4.0.0",
     "rollup-plugin-typescript2": "^0.31.2",
     "tslib": "2.3.1",

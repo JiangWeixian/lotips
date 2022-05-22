@@ -38,6 +38,7 @@ importers:
       rimraf: 3.0.2
       rollup: 2.70.1
       rollup-plugin-condition-exports: ^1.4.1
+      rollup-plugin-multi-input: ^1.3.1
       rollup-plugin-node-externals: ^4.0.0
       rollup-plugin-typescript2: ^0.31.2
       tslib: 2.3.1
@@ -54,6 +55,7 @@ importers:
       rimraf: 3.0.2
       rollup: 2.70.1
       rollup-plugin-condition-exports: 1.4.1
+      rollup-plugin-multi-input: 1.3.1
       rollup-plugin-node-externals: 4.0.0_rollup@2.70.1
       rollup-plugin-typescript2: 0.31.2_dcfdf920a076fb753d9a74e8fedece5c
       tslib: 2.3.1

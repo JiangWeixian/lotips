@@ -6,7 +6,6 @@ enum Hello {
 
 describe('value of enum', () => {
   test('should work', () => {
-    console.log(valuesOfEnum(Hello))
     expect(valuesOfEnum(Hello)).toMatchSnapshot();
   })
 })
